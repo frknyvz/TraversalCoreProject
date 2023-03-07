@@ -13,6 +13,7 @@ namespace TraversalCoreProject.Controllers
         [HttpGet]
         public PartialViewResult AddComment()
         {
+            int a;
             return PartialView();
         }
         [HttpPost]
