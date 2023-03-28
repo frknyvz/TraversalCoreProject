@@ -1,8 +1,35 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
 @{
     ViewData["Title"] = "MyCurrentReservation";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h1>Aktif Rezervasyonlarım</h1>
+@if (Model.Count() == 0)
+{
+    <h2>Sonuç Bulunamadı..</h2>
+}
+else
+{
+    <h1>Aktif Rezervasyonlarım</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Lokasyon</th>
+            <th>Kişi Sayısı</th>
+            <th>Rezervasyon Tarihi</th>
+            <th>Durum</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.ReservationID</td>
+                <td>@x.Destination.City</td>
+                <td>@x.PersonCount</td>
+                <td>@(((DateTime)x.ReservationDate).ToString("dd MMMM yyyy"))</td>
+                <td>@x.Status</td>
+            </tr>
+        }
+    </table>
+}
 

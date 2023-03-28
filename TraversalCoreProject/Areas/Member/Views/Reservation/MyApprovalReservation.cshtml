@@ -1,7 +1,7 @@
 ﻿@using EntityLayer.Concrete
 @model List<Reservation>
 @{
-    ViewData["Title"] = "MyOldReservation";
+    ViewData["Title"] = "MyApprovalReservation";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
@@ -11,7 +11,7 @@
 }
 else
 {
-    <h1>Geçmiş Rezervasyonlarım</h1>
+    <h1>Onay Bekleyen Rezervasyonlar</h1>
     <table class="table table-bordered">
         <tr>
             <th>#</th>
@@ -32,4 +32,7 @@ else
         }
     </table>
 }
+
+
+
 
