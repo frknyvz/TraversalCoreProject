@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrete
+@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<style>
+    img{
+        background:transparent;
+        padding:5px;
+        border:1px solid #999999;
+        border-radius:50%;
+        margin:auto;
+        display:block;
+        height:90px;
+        width:90px;
+    }
+</style>
+
+<h1>Rehber Listesi</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Görsel</th>
+        <th>Ad Soyad</th>
+        <th>Açıklama</th>
+        <th>Durum</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        count = count + 1;
+        <tr>
+            <td>@count</td>
+            <td><img src="@x.Image"/></td>
+            <td>@x.Name</td>
+            <td>@x.Description</td>
+
+            @{
+                if (x.Status == true)
+                {
+                    <td><a href="/Admin/Guide/ChangeToFalse/@x.GuideID" class="btn btn-outline-warning">Pasif Yap</a></td>
+                }
+                else
+                {
+                    <td><a href="/Admin/Guide/ChangeToTrue/@x.GuideID" class="btn btn-outline-success">Aktif Yap</a></td>
+                }
+            }
+
+            <td><a href="/Admin/Guide/EditGuide/" class="btn btn-outline-info">Düzenle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Admin/Guide/AddGuide/" class="btn btn-outline-primary">Yeni Rehber Girişi</a>
+
+
