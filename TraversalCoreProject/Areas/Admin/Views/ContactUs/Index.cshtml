@@ -1,0 +1,89 @@
+﻿@model List<ContactUs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    .styledTable {
+        position: center;
+    }
+
+    table {
+        width: 100%;
+        border: 0.5px solid;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    th {
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #fff;
+        text-align: center;
+    }
+
+    td {
+        border: 1px solid;
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #000;
+        text-align: center;
+    }
+
+    thead th {
+        background-color: #5453A6;
+    }
+
+    tbody tr :hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    tbody td {
+        position: relative;
+    }
+
+</style>
+
+
+<h2>GELEN MESAJLAR</h2>
+<br />
+
+<div class="styledTable">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>GÖNDEREN</th>
+                <th>KONU</th>
+                <th>TARİH</th>
+                <th>SİL</th>
+                <th>MESAJI AÇ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@x.Name</td>
+                    <td>@x.Subject</td>
+                    <td>@x.MessageDate.ToString("dd MMM yyyy")</td>
+                    <td><a href="#" class="btn btn-outline-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
+                    <td><a href="#" class="btn btn-outline-dark" title="Mesajı Aç"><i class="bi bi-envelope-paper"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

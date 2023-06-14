@@ -4,32 +4,93 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
-<h1>Tur Rotaları</h1>
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Şehir</th>
-        <th>Fiyat</th>
-        <th>Kapasite</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-        <th>Sitede Gör</th>
-    </tr>
-    @foreach (var x in Model)
-    {
-        <tr>
-            <td>@x.DestinationID</td>
-            <td>@x.City</td>
-            <td>@x.Price ₺</td>
-            <td>@x.Capacity</td>
-            <td><a href="/Admin/Destination/DeleteDestination/@x.DestinationID/" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Admin/Destination/UpdateDestination/@x.DestinationID/" class="btn btn-success">Güncelle</a></td>
-            <td><a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-outline-info">Sitede Gör</a></td>
-        </tr>
+<style>
+
+    h2 {
+        text-align: center;
     }
-</table>
-<a href="/Admin/Destination/AddDestination/" class="btn btn-outline-primary">Yeni Rota Ekle</a>
+
+    .styledTable {
+        position: center;
+    }
+
+    table {
+        width: 100%;
+        border: 0.5px solid;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    th {
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #fff;
+        text-align: center;
+    }
+
+    td {
+        border: 1px solid;
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #000;
+        text-align: center;
+    }
+
+    thead th {
+        background-color: #5453A6;
+    }
+
+    tbody tr :hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    tbody td {
+        position: relative;
+    }
+
+</style>
+
+<h2> ŞEHİRLER VE ROTALAR </h2>
+<br />
+
+<div class="styledTable">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ŞEHİR</th>
+                <th>FİYAT</th>
+                <th>KAPASİTE</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+                <th>SİTEDE GÖR</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@x.City</td>
+                    <td>@x.Price ₺</td>
+                    <td>@x.Capacity Kişi</td>
+                    <td><a href="/Admin/Destination/DeleteDestination/@x.DestinationID/" class="btn btn-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
+                    <td><a href="/Admin/Destination/UpdateDestination/@x.DestinationID/" class="btn btn-warning" title="Güncelle"><i class="bi bi-vector-pen"></i></a></td>
+                    <td><a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-info" title="Git"><i class="bi bi-box-arrow-up-right"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href="/Admin/Destination/AddDestination/" class="btn btn-outline-primary" title="Yeni Rota Ekle"><i class="bi bi-plus-circle-fill"></i></a>
+</div>
+
 

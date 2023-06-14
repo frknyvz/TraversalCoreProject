@@ -6,37 +6,96 @@
     int sayac = 0;
 }
 
-<h1>Ziyaretçiler</h1>
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Ad Soyad</th>
-        <th>Cinsiyet</th>
-        <th>Kullanıcı Adı</th>
-        <th>E-Posta</th>
-        <th>Telefon Numarası</th>
-        <th>Sil</th>
-        <th>Düzenle</th>
-        <th>Yorumlar</th>
-        <th>Tur Geçmişi</th>
-    </tr>
-    @foreach (var x in Model)
-    {
-        <tr>
-            @{sayac = @sayac + 1;}
-            <td>@sayac</td>
-            <td>@x.Name @x.Surname</td>
-            <td>@x.Gender</td>
-            <td>@x.UserName</td>
-            <td>@x.Email</td>
-            <td>@x.PhoneNumber</td>
-            <td><a href="/Admin/User/DeleteUser/@x.Id" class="btn btn-outline-danger">Sil</a></td>
-            <td><a href="/Admin/User/EditUser/@x.Id" class="btn btn-outline-success">Düzenle</a></td>
-            <td><a href="/Admin/User/CommentUser/@x.Id" class="btn btn-outline-info">Yorumlar</a></td>
-            <td><a href="/Admin/User/ReservationUser/@x.Id" class="btn btn-outline-secondary">Tur Geçmişi</a></td>
-        </tr>
+<style>
+
+    h2 {
+        text-align: center;
     }
-</table>
 
-<a href="/Login/SignUp/" class="btn btn-outline-primary">Yeni Kullanıcı Ekle</a>
+    .styledTable {
+        position: center;
+    }
+
+    table {
+        width: 100%;
+        border: 0.5px solid;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    th {
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #fff;
+        text-align: center;
+    }
+
+    td {
+        border: 1px solid;
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #000;
+        text-align: center;
+    }
+
+    thead th {
+        background-color: #5453A6;
+    }
+
+    tbody tr :hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    tbody td {
+        position: relative;
+    }
+
+</style>
+
+<h2>KULLANICILAR</h2>
+<br />
+
+<div class="styledTable">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>AD SOYAD</th>
+                <th>CİNSİYET</th>
+                <th>KULLANICI ADI</th>
+                <th>E-POSTA</th>
+                <th>TELEFON NUMARASI</th>
+                <th>SİL</th>
+                <th>DÜZENLE</th>
+                <th>YORUMLAR</th>
+                <th>TUR GEÇMİŞİ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    @{
+                        sayac = @sayac + 1;
+                    }
+                    <td>@sayac</td>
+                    <td>@x.Name @x.Surname</td>
+                    <td>@x.Gender</td>
+                    <td>@x.UserName</td>
+                    <td>@x.Email</td>
+                    <td>@x.PhoneNumber</td>
+                    <td><a href="/Admin/User/DeleteUser/@x.Id" class="btn btn-outline-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
+                    <td><a href="/Admin/User/EditUser/@x.Id" class="btn btn-outline-success" title="Düzenle"><i class="bi bi-vector-pen"></i></a></td>
+                    <td><a href="/Admin/User/CommentUser/@x.Id" class="btn btn-outline-info" title="Yorumlar"><i class="bi bi-chat-dots"></i></a></td>
+                    <td><a href="/Admin/User/ReservationUser/@x.Id" class="btn btn-outline-secondary" title="Tur Geçmişi"><i class="bi bi-clock-history"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href="/Login/SignUp/" class="btn btn-outline-primary" title="Yeni Kullanıcı Ekle"><i class="bi bi-person-plus"></i></a>
+</div>

@@ -1,0 +1,50 @@
+﻿@model AnnouncementUpdateDTO
+@{
+    ViewData["Title"] = "UpdateAnnouncement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    #backButton {
+    }
+
+    #updateButton {
+        position: absolute;
+        right: 110px
+    }
+
+</style>
+
+<h2>DUYURU GÜNCELLEME</h2>
+
+<body>
+    <form method="post">
+        @Html.HiddenFor(x=>x.AnnouncementID)
+
+        <button class="btn btn-outline-success" id="updateButton"><i class="bi bi-save"></i> Duyuru Güncelle</button>
+        <a href="/Admin/Announcement/Index" class="btn btn-outline-danger" id="backButton"><i class="bi bi-backspace"></i> Geri</a>
+        <br /><br />
+
+        <div class="form-group">
+            @Html.Label("Başlık:")
+            <input type="text" asp-for="Title" class="form-control" />
+            <span class="text-danger" asp-validation-for="Title"></span>
+        </div>
+        &nbsp;
+        <div class="form-group">
+            @Html.Label("İçerik:")
+            <input type="text" asp-for="Content" class="form-control" />
+            <span class="text-danger" asp-validation-for="Content"></span>
+        </div>
+    </form>
+</body>
+

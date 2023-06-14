@@ -3,23 +3,37 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<h1>Yeni Mail Gönderme Sayfası</h1>
-<form method="post">
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+<style>
+    h2 {
+        text-align:center;
+    }
+</style>
+
+<h2>YENİ MAİL GÖNDER</h2>
+<br />
+
+<body>
+    <form method="post" >
     <div class="form-group">
-        @Html.Label("Alıcı Maili:")
+            @Html.Label("Alıcı Maili:")
         <input type="text" asp-for="ReceiverMail" class="form-control" />
     </div>
     <br />
     <div class="form-group">
-        @Html.Label("Konu Başlığı:")
+            @Html.Label("Konu Başlığı:")
         <input type="text" asp-for="Subject" class="form-control" />
     </div>
     <br />
     <div class="form-group">
-        @Html.Label("İçerik:")
+            @Html.Label("İçerik:")
         <textarea cols="30" rows="5" class="form-control" asp-for="Body"></textarea>
     </div>
     <br />
-    <button class="btn btn-outline-success">Mail Gönder</button>
+    <button class="btn btn-success" disabled>Mail Gönder (In Progress)</button>
 </form>
+</body>
+
 

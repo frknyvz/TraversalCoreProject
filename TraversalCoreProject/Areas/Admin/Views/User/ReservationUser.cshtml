@@ -6,28 +6,87 @@
     int count = 0;
 }
 
-<h1>Kullanıcının Geçmiş Rezervasyonları</h1>
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Misafir Ad Soyad</th>
-        <th>Rota</th>
-        <th>Kişi Sayısı</th>
-        <th>Tarih</th>
-        <th>Detaylar</th>
-    </tr>
-    @foreach (var x in Model)
-    {
-        { count = count + 1; }
-        <tr>
-            <td>@count</td>
-            <td>###</td>
-            <td>@x.Destination.City</td>
-            <td>@x.PersonCount</td>
-            <td>@(((DateTime)x.ReservationDate).ToString("dd MMM yyyy"))</td>
-            <td><a href="#" class="btn btn-outline-primary">Detaylar</a></td>
-        </tr>
+<style>
+
+    h2 {
+        text-align: center;
     }
-</table>
+
+    .styledTable {
+        position: center;
+    }
+
+    table {
+        width: 100%;
+        border: 0.5px solid;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    th {
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #fff;
+        text-align: center;
+    }
+
+    td {
+        border: 1px solid;
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #000;
+        text-align: center;
+    }
+
+    thead th {
+        background-color: #5453A6;
+    }
+
+    tbody tr :hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    tbody td {
+        position: relative;
+    }
+
+</style>
+
+<h2>GEÇMİŞ REZERVASYONLAR</h2>
+<br />
+<a href="/Admin/User/Index/" class="btn btn-outline-danger" title="Geri"><i class="bi bi-backspace"></i>  Geri</a>
+<br /><br />
+<div class="styledTable">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>MİSAFİR AD SOYAD</th>
+                <th>ROTA</th>
+                <th>KİŞİ SAYISI</th>
+                <th>TARİH</th>
+                <th>DETAYLAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                { count = count + 1; }
+                <tr>
+                    <td>@count</td>
+                    <td>???</td>
+                    <td>@x.Destination.City</td>
+                    <td>@x.PersonCount</td>
+                    <td>@(((DateTime)x.ReservationDate).ToString("dd MMM yyyy"))</td>
+                    <td><a href="#" class="btn btn-outline-primary" title="Detaylar"><i class="bi bi-list-check"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
 

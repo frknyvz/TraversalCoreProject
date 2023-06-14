@@ -1,5 +1,8 @@
-﻿using DocumentFormat.OpenXml.Office2010.ExcelAc;
+﻿using BusinessLayer.Abstract;
+using DocumentFormat.OpenXml.Wordprocessing;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using TraversalCoreProject.Models;
@@ -9,6 +12,12 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
     [Area("Admin")]
     public class CityController : Controller
     {
+        private readonly IDestinationService _destinationService;
+        public CityController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -16,33 +25,46 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 
         public IActionResult CityList()
         {
-            var jsonCity = JsonConvert.SerializeObject(cities);
+            var jsonCity = JsonConvert.SerializeObject(_destinationService.TGetList());
             return Json(jsonCity);
         }
-
-        public static List<CityClass> cities = new List<CityClass>
+        [HttpPost]
+        public IActionResult AddCityDestination(EntityLayer.Concrete.Destination destination)
         {
-            new CityClass
-            {
-                CityID = 1,
-                CityName= "Tokat",
-                CityCountry= "Türkiye"
-            },
+            destination.Status = true;
+            _destinationService.TAdd(destination);
+            var values = JsonConvert.SerializeObject(destination);
+            return Json(values);
+        }
 
-            new CityClass
+        public IActionResult GetById(int DestinationID)
+        {
+            var values = _destinationService.TGetByID(DestinationID);
+            if(values == null)
             {
-                CityID = 2,
-                CityName= "Londra",
-                CityCountry= "İngiltere"
-            },
-
-            new CityClass
+                //Kayıt bulunmadığı durumlar için pop-up oluşturulabilir.
+            }
+            else
             {
-                CityID = 3,
-                CityName= "Paris",
-                CityCountry= "Fransa"
-            },
+                var jsonValues = JsonConvert.SerializeObject(values);
+                return Json(jsonValues);
+            }
+            return View();
+        }
 
-        };
+        public IActionResult DeleteCity(int id)
+        {
+            var values = _destinationService.TGetByID(id);
+            _destinationService.TDelete(values);
+            return NoContent();
+        }
+
+        public IActionResult UpdateCity(EntityLayer.Concrete.Destination destination)
+        {
+            var values = _destinationService.TGetByID(destination.DestinationID);
+            _destinationService.TUpdate(destination);
+            var v = JsonConvert.SerializeObject(destination);
+            return Json(v);
+        }
     }
 }

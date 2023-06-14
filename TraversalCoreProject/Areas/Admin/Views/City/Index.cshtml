@@ -2,19 +2,104 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<h2>Şehir - Ülke İşlemleri</h2>
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    .labelStyle {
+        font-size: 18px;
+    }
+
+    .divArea {
+        border: inset;
+        border-width: 2px;
+        border-radius: 5px;
+        background-color: seashell;
+        text-align: center;
+    }
+
+    .editInputStyle {
+        margin-top: 5px;
+        margin-left: 1px;
+    }
+
+    .editButtonStyle {
+        margin-bottom: 5px;
+    }
+</style>
+
+<h2>ŞEHİR - ROTA İŞLEMLERİ</h2>
 <br />
-<button type="button" id="btngetlist" class="btn btn-outline-info">Şehir Listesi</button>
-<button type="button" id="btngetbyid" class="btn btn-outline-primary">Şehir Getir</button>
-<button type="button" id="btnaddcity" class="btn btn-outline-success">Şehir Ekle</button>
-<button type="button" id="btndeletecity" class="btn btn-outline-danger">Şehir Sil</button>
-<button type="button" id="btnupdatecity" class="btn btn-outline-secondary">Şehir Güncelle</button>
-<br />
-<br />
+<div style="text-align:center">
+    <button type="button" id="btngetlist" class="btn btn-outline-info"><i class="bi bi-ui-checks"></i> Listeyi Görüntüle</button>
+</div>
+
 <div id="citylist">
 </div>
+
+<br />
+<form>
+    <label class="labelStyle"><i class="bi bi-pin-angle"></i> Şehir - Rota Arama:</label>
+    <div class="divArea">
+        <input type="number" id="txtid" placeholder="ID" class="form-control editInputStyle" />
+        <br />
+        <button type="button" id="btngetbyid" class="btn btn-outline-primary editButtonStyle"><i class="bi bi-search"></i> Ara</button>
+        <button type="reset" class="btn btn-outline-danger editButtonStyle"><i class="bi bi-x-circle"></i> Temizle</button>
+    </div>
+    <div id="destinationlistbyid">
+    </div>
+    <br />
+</form>
+<form>
+    <label class="labelStyle"><i class="bi bi-pin-angle"></i> Şehir - Rota Ekleme:</label>
+    <div class="divArea">
+        <input type="text" id="txtcity" placeholder="Ad" class="form-control editInputStyle" />
+        <br />
+        <input type="text" id="txtdaynight" placeholder="Gece-Gündüz" class="form-control editInputStyle" />
+        <br />
+        <input type="number" id="txtprice" placeholder="Fiyat" class="form-control editInputStyle" />
+        <br />
+        <input type="number" id="txtcapacity" placeholder="Kapasite" class="form-control editInputStyle" />
+        <br />
+        <button type="button" id="btnaddcity" class="btn btn-outline-success editButtonStyle"><i class="bi bi-plus-square"></i> Kaydet</button>
+        <button type="reset" class="btn btn-outline-danger editButtonStyle"><i class="bi bi-x-circle"></i> Temizle</button>
+    </div>
+    <br />
+</form>
+<form>
+    <label class="labelStyle"><i class="bi bi-pin-angle"></i> Şehir - Rota Güncelleme:</label>
+    <div class="divArea">
+        <input type="number" id="txtcityeditid" placeholder="ID" class="form-control editInputStyle" />
+        <br />
+        <input type="text" id="txtcityeditname" placeholder="Ad" class="form-control editInputStyle" />
+        <br />
+        <input type="text" id="txtcityeditdaynight" placeholder="Gece - Gündüz" class="form-control editInputStyle" />
+        <br />
+        <input type="number" id="txtcityeditprice" placeholder="Fiyat" class="form-control editInputStyle" />
+        <br />
+        <input type="number" id="txtcityeditcapacity" placeholder="Kapasite" class="form-control editInputStyle" />
+        <br />
+        <button type="button" id="btnupdatecity" class="btn btn-outline-dark editButtonStyle"><i class="bi bi-pencil-square"></i> Güncelle</button>
+        <button type="reset" class="btn btn-outline-danger editButtonStyle"><i class="bi bi-x-circle"></i> Temizle</button>
+    </div>
+    <br />
+</form>
+<form>
+    <label class="labelStyle"><i class="bi bi-pin-angle"></i> Şehir - Rota Silme:</label>
+    <div class="divArea">
+        <input type="number" id="txtcityid" placeholder="Silinecek ID" class="form-control editInputStyle" />
+        <br />
+        <button type="button" id="btndeletecity" class="btn btn-outline-warning editButtonStyle"><i class="bi bi-trash"></i> Sil</button>
+        <button type="reset" class="btn btn-outline-danger editButtonStyle"><i class="bi bi-x-circle"></i> Temizle</button>
+    </div>
+</form>
 
 <script>
     $("#btngetlist").click(function () {
@@ -26,13 +111,82 @@
             success: function (func) {
                 let w = jQuery.parseJSON(func);
                 console.log(w);
-                let tablehtml = "<table class=table table-bordered> <tr><th> Şehir ID </th> <th> Şehir Adı </th> <th> Ülke Adı </th></tr>";
+                let tablehtml = "<table class=table table-bordered> <tr><th> Şehir Adı </th> <th> Gece-Gündüz </th> <th> Fiyat </th> <th> Kapasite </th></tr>";
                 $.each(w, (index, value) => {
-                    tablehtml += `<tr><td>${value.CityID}</td> <td>${value.CityName}</td> <td>${value.CityCountry}</td></tr>`
+                    tablehtml += `<tr><td>${value.City}</td> <td>${value.DayNight}</td> <td>${value.Price} ₺</td> <td>${value.Capacity}</td></tr>`
                 });
                 tablehtml += "</table>";
                 $("#citylist").html(tablehtml);
             }
         });
     });
+
+    $("#btnaddcity").click(function () {
+        let cityvalues = {
+            City: $("#txtcity").val(),
+            DayNight: $("#txtdaynight").val(),
+            Price: $("#txtprice").val(),
+            Capacity: $("#txtcapacity").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/City/AddCityDestination/",
+            data: cityvalues,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+                alert("Şehir - Rota Başarılı Bir Şekilde Eklendi");
+            }
+        });
+    });
+
+    $("#btngetbyid").click(x => {
+        let id = $("#txtid").val();
+
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "Get",
+            url: "/Admin/City/GetById/",
+            data: { DestinationID: id },
+            success: function (fun2) {
+                let result = jQuery.parseJSON(fun2);
+                console.log(result);
+                let htmlstr = `<table class=table table-bordered><tr><th>Şehir Adı</th><th>Gece-Gündüz</th><th>Fiyatı</th><th>Kapasite</th></tr><tr><td>${result.City}</td><td>${result.DayNight}</td><td>${result.Price} ₺</td><td>${result.Capacity}</td></tr></table>`;
+                $("#destinationlistbyid").html(htmlstr);
+            }
+        });
+    });
+
+    $("#btndeletecity").click(x => {
+        let id = $("#txtcityid").val();
+        $.ajax({
+            url: "/Admin/City/DeleteCity/" + id,
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (fun3) {
+                loadData();
+            }
+        });
+    });
+
+    $("#btnupdatecity").click(function () {
+        let values = {
+            DestinationID: $("#txtcityeditid").val(),
+            City: $("#txtcityeditname").val(),
+            DayNight: $("#txtcityeditdaynight").val(),
+            Price: $("#txtcityeditprice").val(),
+            Capacity: $("#txtcityeditcapacity").val()
+        };
+        $.ajax({
+            type: "post",
+            url: "/Admin/City/UpdateCity/",
+            data: values,
+            success: function (fun4) {
+                alert("Güncelleme İşlemi Yapıldı.");
+            }
+        });
+    });
+
 </script>
