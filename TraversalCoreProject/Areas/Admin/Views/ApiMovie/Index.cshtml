@@ -1,0 +1,90 @@
+﻿@model List<ApiMovieViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    .styledTable {
+        position: center;
+    }
+
+    table {
+        width: 100%;
+        border: 0.5px solid;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    th {
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #fff;
+        text-align: center;
+    }
+
+    td {
+        border: 1px solid;
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+        color: #000;
+        text-align: center;
+    }
+
+    thead th {
+        background-color: #5453A6;
+    }
+
+    tbody tr :hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    tbody td {
+        position: relative;
+    }
+
+</style>
+
+<h2> IMDB EN İYİ 100 FİLM </h2>
+<br />
+
+<div class="styledTable">
+    <table>
+        <thead>
+            <tr>
+                <th>DERECE</th>
+                <th>BAŞLIK</th>
+                <th>PUAN</th>
+                <th>YIL</th>
+                <th>RESİM</th>
+                <th>AÇIKLAMA</th>
+                <th>FRAGMAN</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.rank</td>
+                    <td>@x.title</td>
+                    <td>@x.rating</td>
+                    <td>@x.year</td>
+                    <td>@x.description</td>
+                    <td><a href="@x.image.ToString()" class="btn btn-warning" title="Resmi Aç" target="_blank"><i class="bi bi-card-image"></i></a></td>
+                    <td><a href="@x.trailer.ToString()" class="btn btn-info" title="Fragmana Git" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+</div>
+

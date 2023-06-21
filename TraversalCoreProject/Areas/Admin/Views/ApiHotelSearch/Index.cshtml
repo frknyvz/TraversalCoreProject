@@ -1,10 +1,9 @@
-﻿@using EntityLayer.Concrete
-@model List<Destination>
-
+﻿@model IEnumerable<ApiHotelSearchViewModel.Result>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
+    double score;
 }
 
 <!-- Bootstrap Font Icon CSS -->
@@ -57,22 +56,20 @@
 
 </style>
 
-<h2> ŞEHİRLER VE ROTALAR </h2>
+<h2> OTEL REZERVASYON SAYFASI </h2>
 <br />
+
+<h3> Arama Yapılan Şehir : Paris / Fransa</h3>
 
 <div class="styledTable">
     <table>
         <thead>
             <tr>
                 <th>#</th>
-                <th>ŞEHİR</th>
-                <th>FİYAT</th>
-                <th>KAPASİTE</th>
-                <th>AÇIKLAMA</th>
-                <th>DURUM</th>
-                <th>SİL</th>
-                <th>GÜNCELLE</th>
-                <th>SİTEDE GÖR</th>
+                <th>ADI</th>
+                <th>PUANI</th>
+                <th>DEĞERLENDİRMESİ</th>
+                <th>DETAYLAR</th>
             </tr>
         </thead>
         <tbody>
@@ -81,29 +78,34 @@
                 count++;
                 <tr>
                     <td>@count</td>
-                    <td>@x.City</td>
-                    <td>@x.Price ₺</td>
-                    <td>@x.Capacity Kişi</td>
-                    <td>@x.Description</td>
+                    <td>@x.hotel_name</td>
                     @{
-                        if(x.Status == true)
+                        score = double.Parse(x.review_score.ToString()) / 10;
+                    }
+                    <td>@score</td>
+                    @{
+                        if (x.review_score_word == "Very good")
                         {
-                            <td>Aktif</td>   
+                            <td>Çok İyi</td>
                         }
-                        if (x.Status == false)
+                        if (x.review_score_word == "Good")
                         {
-                            <td>Pasif</td>
+                            <td>İyi</td>
+                        }
+                        if (x.review_score_word == "Pleasant")
+                        {
+                            <td>Güzel</td>
+                        }
+                        if (x.review_score_word == "Fabulous")
+                        {
+                            <td>Harika</td>
                         }
                     }
-                    <td><a href="/Admin/Destination/DeleteDestination/@x.DestinationID/" class="btn btn-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
-                    <td><a href="/Admin/Destination/UpdateDestination/@x.DestinationID/" class="btn btn-warning" title="Güncelle"><i class="bi bi-vector-pen"></i></a></td>
-                    <td><a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-info" title="Git"><i class="bi bi-box-arrow-up-right"></i></a></td>
+                    <td><a href="#" class="btn btn-info" title="Detaylar" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a></td>
                 </tr>
             }
         </tbody>
     </table>
     <br />
-    <a href="/Admin/Destination/AddDestination/" class="btn btn-outline-primary" title="Yeni Rota Ekle"><i class="bi bi-plus-circle-fill"></i></a>
 </div>
-
 

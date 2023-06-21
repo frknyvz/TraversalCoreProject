@@ -1,0 +1,63 @@
+﻿@model VisitorViewModel
+@{
+    ViewData["Title"] = "UpdateVisitor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    #backButton {
+    }
+
+    #updateButton {
+        position: absolute;
+        right: 110px
+    }
+
+</style>
+
+
+<h2>ZİYARETÇİ BİLGİLERİ GÜNCELLEME (API)</h2>
+
+
+<form method="post">
+    @Html.HiddenFor(x=>x.VisitorID)
+
+    <button class="btn btn-outline-success" id="updateButton"><i class="bi bi-save"></i> Güncelle</button>
+    <a href="/Admin/VisitorApi/Index" class="btn btn-outline-danger" id="backButton"><i class="bi bi-backspace"></i> Geri</a>
+    <br /><br />
+
+    <div class="form-group">
+        @Html.Label("Ad:")
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Soyad:")
+        <input type="text" asp-for="Surname" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Şehir:")
+        <input type="text" asp-for="City" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Ülke:")
+        <input type="text" asp-for="Country" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Mail:")
+        <input type="text" asp-for="Mail" class="form-control" />
+    </div>
+    <br />
+</form>
+

@@ -1,6 +1,4 @@
-﻿@using EntityLayer.Concrete
-@model List<Destination>
-
+﻿@model List<GetAllDestinationQueryResult>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -57,7 +55,7 @@
 
 </style>
 
-<h2> ŞEHİRLER VE ROTALAR </h2>
+<h2> ŞEHİRLER VE ROTALAR (CQRS) </h2>
 <br />
 
 <div class="styledTable">
@@ -68,11 +66,9 @@
                 <th>ŞEHİR</th>
                 <th>FİYAT</th>
                 <th>KAPASİTE</th>
-                <th>AÇIKLAMA</th>
-                <th>DURUM</th>
+                <th>GÜN - GECE</th>
                 <th>SİL</th>
                 <th>GÜNCELLE</th>
-                <th>SİTEDE GÖR</th>
             </tr>
         </thead>
         <tbody>
@@ -81,29 +77,20 @@
                 count++;
                 <tr>
                     <td>@count</td>
-                    <td>@x.City</td>
-                    <td>@x.Price ₺</td>
-                    <td>@x.Capacity Kişi</td>
-                    <td>@x.Description</td>
-                    @{
-                        if(x.Status == true)
-                        {
-                            <td>Aktif</td>   
-                        }
-                        if (x.Status == false)
-                        {
-                            <td>Pasif</td>
-                        }
-                    }
-                    <td><a href="/Admin/Destination/DeleteDestination/@x.DestinationID/" class="btn btn-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
-                    <td><a href="/Admin/Destination/UpdateDestination/@x.DestinationID/" class="btn btn-warning" title="Güncelle"><i class="bi bi-vector-pen"></i></a></td>
-                    <td><a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-info" title="Git"><i class="bi bi-box-arrow-up-right"></i></a></td>
+                    <td>@x.city</td>
+                    <td>@x.price ₺</td>
+                    <td>@x.capacity Kişi</td>
+                    <td>@x.daynight</td>
+                    <td><a href="/Admin/DestinationCQRS/DeleteDestination/@x.id/" class="btn btn-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
+                    <td><a href="/Admin/DestinationCQRS/GetDestination/@x.id/" class="btn btn-warning" title="Güncelle"><i class="bi bi-vector-pen"></i></a></td>
                 </tr>
             }
         </tbody>
     </table>
     <br />
-    <a href="/Admin/Destination/AddDestination/" class="btn btn-outline-primary" title="Yeni Rota Ekle"><i class="bi bi-plus-circle-fill"></i></a>
+    <a href="/Admin/DestinationCQRS/AddDestination/" class="btn btn-outline-primary" title="Yeni Rota Ekle"><i class="bi bi-plus-circle-fill"></i></a>
 </div>
+
+
 
 
