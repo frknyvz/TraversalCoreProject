@@ -5,6 +5,9 @@
 }
 <!doctype html>
 <html lang="zxx">
+<head>
+    <title>Rotalar | Traversal </title>
+</head>
 <body>
     <section class="w3l-about-breadcrumb text-left">
         <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
@@ -20,13 +23,13 @@
     <section class="grids-1 py-5">
         <div class="grids py-lg-5 py-md-4">
             <div class="container">
-                <h3 class="hny-title mb-5">Tur Rotalarımız</h3>
+                <h3 class="hny-title mb-5">Rotalarımız</h3>
                 <div class="row">
                     @foreach (var x in Model)
                     {
                         <div class="col-lg-4 col-md-4 col-6">
                             <div class="column">
-                                <a href="/Destination/DestinationDetails/@x.DestinationID"><img src="@x.Image" alt="" class="img-fluid"></a>
+                                <a href="/Destination/DestinationDetails/@x.DestinationID"><img src="@x.Image" alt="" class="img-fluid" style="width:440px; height:400px"></a>
                                 <div class="info">
                                     <h4><a href="/Destination/DestinationDetails/@x.DestinationID">@x.City</a></h4>
                                     <p>@x.DayNight </p>

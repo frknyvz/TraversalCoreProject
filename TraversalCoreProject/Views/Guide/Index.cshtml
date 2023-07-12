@@ -1,0 +1,60 @@
+﻿@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<head>
+    <title>Rehberler | Traversal </title>
+</head>
+<body>
+    <section class="w3l-about-breadcrumb text-left">
+        <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+            <div class="container">
+                <h2 class="title">Rehberler </h2>
+                <ul class="breadcrumbs-custom-path mt-2">
+                    <li><a href="/Default/Index">Ana Sayfa</a></li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Rehberler </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="w3l-team" id="team">
+        <div class="team-block py-5">
+            <div class="container py-lg-5">
+                @*                <div class="title-content text-center mb-lg-3 mb-4">
+                <h1 class="sub-title">Rehberler</h1>
+                <h3 class="hny-title">Meet our Guides</h3>
+                </div>*@
+                <h3 class="hny-title mb-5">Rehberlerimiz</h3>
+                <div class="row">
+                    @foreach (var x in Model)
+                    {
+                        <div class="col-lg-3 col-6 mt-lg-5 mt-4">
+                            <div class="box16">
+                                <a href="#url"><img src="@x.Image" alt="" class="img-fluid" /></a>
+                                <div class="box-content">
+                                    <h4 class="title"><a href="#url">@x.Name</a></h4>
+                                    <span class="post">@x.Route</span>
+                                    <ul class="social">
+                                        <li>
+                                            <a href="@x.InstagramUrl" class="instagram" target="_blank">
+                                                <span class="fa fa-instagram"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@x.TwitterUrl" class="twitter" target="_blank">
+                                                <span class="fa fa-twitter"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+

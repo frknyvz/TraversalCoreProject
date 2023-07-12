@@ -1,0 +1,90 @@
+﻿@model SendMessageDTO
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>İletişim | Traversal </title>
+    <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="~/Traversal-Liberty/assets/css/style-liberty.css">>
+</head>
+<body>
+    <section class="w3l-about-breadcrumb text-left">
+        <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+            <div class="container">
+                <h2 class="title">İletişim </h2>
+                <ul class="breadcrumbs-custom-path mt-2">
+                    <li><a href="/Default/Index">Ana Sayfa</a></li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> İletişim </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="w3l-contact" id="contact">
+        <div class="contact-infubd py-5">
+            <div class="container py-lg-3">
+                <div class="contact-grids row">
+                    <div class="col-lg-6 contact-left">
+                        <div class="partners">
+                            <div class="cont-details">
+                                <h5>Yardım Merkezi</h5>
+                                <p class="mt-3 mb-4">
+                                    Merhaba değerli ziyaretçimiz,
+                                    her türlü soru, görüş ve önerilerin için bizimle iletişime geçebilirsin.
+                                </p>
+                            </div>
+                            <div class="hours">
+                                <h6 class="mt-4">Mail:</h6>
+                                <p>
+                                    <a href="#">
+                                        mail@traversal.com
+                                    </a>
+                                </p>
+                                <h6 class="mt-4">Merkez Ofis:</h6>
+                                <p> Zübeyde Hanım Mh. Etlik Cd. Gelir İdaresi Başkanlığı Ek Hizmet Binası ALTINDAĞ/ANKARA</p>
+                                <h6 class="mt-4">Telefon:</h6>
+                                <p class="margin-top"><a href="#">0312 000 00 00</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
+                        <form method="post" class="signin-form">
+                            <div class="input-grids">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Adınız*" asp-for="Name" class="contact-input" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Mail Adresiniz*" asp-for="Mail" class="contact-input" required="" />
+                                    <span asp-validation-for="Mail" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Konu*" asp-for="Subject" class="contact-input" />
+                                    <span asp-validation-for="Subject" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea asp-for="MessageBody" placeholder="Bu alana mesajınızı yazabilirsiniz*" required=""></textarea>
+                                <span asp-validation-for="MessageBody" class="text-danger"></span>
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-style btn-primary">Mesajı Gönder</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="map mt-5 pt-md-5">
+                    <h5>Harita</h5>
+                    <iframe src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=Z%C3%BCbeyde%20Han%C4%B1m%20Mh.%20Etlik%20Cd.%20Gelir%20%C4%B0daresi%20Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1%20Ek%20Hizmet%20Binas%C4%B1%20ALTINDA%C4%9E%2FANKARA+(Ofisimiz)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed"
+                            style="border:0" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
