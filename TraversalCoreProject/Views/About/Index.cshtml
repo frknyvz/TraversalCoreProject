@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hakkımızda | Traversal </title>
+    <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body>
+    <section class="w3l-about-breadcrumb text-left">
+        <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+            <div class="container">
+                <h2 class="title">Hakkımızda </h2>
+                <ul class="breadcrumbs-custom-path mt-2">
+                    <li><a href="/Default/Index">Ana Sayfa</a></li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Hakkımızda </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="w3l-cta4 py-5">
+        <div class="container py-lg-5">
+            <div class="ab-section text-center">
+                <h3 class="hny-title">Hakkımızda</h3>
+                <p class="py-3 mb-3">
+                    Geliştirme ve iyileştirme çalışmaları devam etmektedir. Anlayışınız için teşekkür ederiz..
+                </p>
+                <a href="/Default/Index" class="btn btn-style btn-secondary">Ana Sayfaya Dön</a>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-9 mx-auto">
+                    <img src="~/Traversal-Liberty/assets/images/banner3.jpg" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w3l-content-6 py-5">
+        <div class="container py-lg-5">
+            <div class="row">
+                <div class="col-lg-6 content-6-left pr-lg-5">
+                    <h6 class="sub-title">Why Choose Us</h6>
+                    <h3 class="hny-title">Life begins at the end of your comfort zone.</h3>
+                </div>
+                <div class="col-lg-6 content-6-right mt-lg-0 mt-4">
+                    <p class="mb-3">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum labore sed, veniam nisi sunt laboriosam ducimus, odio
+                        aspernatur fugiat minima blanditiis dignissimos.
+                    </p>
+                    <p class="mb-3">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum labore sed, veniam nisi sunt laboriosam ducimus, odio
+                        aspernatur fugiat minima blanditiis dignissimos.
+                    </p>
+                    <a href="services.html" class="btn btn-style btn-primary mt-4">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w3l-grids1">
+        <div class="hny-three-grids py-5">
+            <div class="container py-lg-5">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 mt-0 grids5-info">
+                        <a href="#url"><img src="~/Traversal-Liberty/assets/images/g1.jpg" class="img-fluid" alt=""></a>
+                        <h5>Lorem</h5>
+                        <h4><a href="#url">Investor Relations</a></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam esse? dolores impedit doloremque.</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 mt-sm-0 mt-5 grids5-info">
+                        <a href="#url"><img src="~/Traversal-Liberty/assets/images/g2.jpg" class="img-fluid" alt=""></a>
+                        <h5>Lorem</h5>
+                        <h4>
+                            <a href="#url">
+                                Partner With Care
+                            </a>
+                        </h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam esse? dolores impedit doloremque.</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 mt-md-0 mt-5 grids5-info">
+                        <a href="#url"><img src="~/Traversal-Liberty/assets/images/g3.jpg" class="img-fluid" alt=""></a>
+                        <h5>Lorem</h5>
+                        <h4><a href="#url">Customer Care</a></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam esse? dolores impedit doloremque.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w3l-statshny py-5" id="stats">
+        <div class="container py-lg-5 py-md-4">
+            <div class="w3-stats-inner-info">
+                <div class="row">
+                    <div class="col-lg-4 col-6 stats_info counter_grid text-left">
+                        <span class="fa fa-plane"></span>
+                        <p class="counter">@ViewBag.v1</p>
+                        <h4>Tur Sayımız</h4>
+                    </div>
+                    <div class="col-lg-4 col-6 stats_info counter_grid1 text-left">
+                        <span class="fa fa-group"></span>
+                        <p class="counter">@ViewBag.v2</p>
+                        <h4>Rehber Sayımız</h4>
+                    </div>
+                    <div class="col-lg-4 col-6 stats_info counter_grid mt-lg-0 mt-5 text-left">
+                        <span class="fa fa-comment"></span>
+                        <p class="counter">@ViewBag.v3</p>
+                        <h4>Sizden Gelen Yorum Sayısı</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+
+
