@@ -1,0 +1,96 @@
+﻿@model List<RoleAssignViewModel>
+@{
+    ViewData["Title"] = "AssignRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    #backButton {
+    }
+
+    #saveButton {
+        position: absolute;
+        right: 135px;
+    }
+
+    .form__input {
+        width: 100%;
+        height: 35px;
+        border: 0.5px solid;
+        border-radius: 2px;
+        margin: 0.625rem auto;
+        transition: all 250ms;
+    }
+
+        .form__input:focus {
+            outline: none;
+            border-top-color: rgba(0,0,0,0.1);
+        }
+
+            .form__input:focus + .form__label, .form__input:not(:placeholder-shown) + .form__label {
+                transform: translateY(-4.5rem) scale(1);
+                color: gray;
+            }
+
+        .form__input::placeholder {
+            display: none;
+            text-align: center;
+            color: transparent;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .form__input:not(:placeholder-shown) {
+            border-top-color: rgba(0, 0, 0, 0.5);
+        }
+
+    .form__label {
+        font-size: 1rem;
+        color: gray;
+        display: block;
+        transform: translate(1.25rem,-2.5rem);
+        transform-origin: 0 0;
+        transition: all 500ms;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+    }
+</style>
+
+
+<body>
+
+    <h2>ROL ATAMA İŞLEMLERİ</h2>
+
+    <div class="container">
+        <form action="" class="form" method="post">
+
+            <a href="/Admin/Role/UserList" class="btn btn-outline-danger" title="Geri" id="backButton"><i class="bi bi-backspace"></i>  Geri</a>
+            <button id="saveButton" class="btn btn-outline-success" title="Kaydet"><i class="bi bi-save"></i>  Kaydet</button>
+            <br /><br />
+
+            @for (int i = 0; i< Model.Count; i++)
+            {
+                <div class="form-check">
+                    <input type="hidden" asp-for="@Model[i].RoleId">
+                    <input type="hidden" asp-for="@Model[i].RoleName">
+
+                    <input type="checkbox" placeholder="Name" class="form-check-input" asp-for="@Model[i].RoleExist" />
+                    <label for="@Model[i].RoleExist" class="form-check-label">@Model[i].RoleName</label>
+                </div>
+            }
+
+        </form>
+    </div>
+</body>
+
