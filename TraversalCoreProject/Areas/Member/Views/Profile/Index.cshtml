@@ -1,40 +1,65 @@
-﻿@model TraversalCoreProject.Areas.Member.Models.UserEditViewModel
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@model TraversalCoreProject.Areas.Member.Models.UserEditViewModel
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h1>Profil Düzenleme Sayfası</h1>
-<form method="post" enctype="multipart/form-data">
-    @Html.Label("Adınız")
-    <input type="text" asp-for="name" class="form-control" />
-    <br />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">@localizer["Profili Düzenle"]</h2>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p class="card-text">@localizer["Kişisel bilgilerinizi aşağıda görüntüleyebilir ve güncelleyebilirsiniz."]</p>
+                    <form method="post" enctype="multipart/form-data">
+                        <label>@localizer["Adınız"]</label>
+                        <input type="text" asp-for="name" class="form-control" />
+                        <br />
 
-    @Html.Label("Soyadınız")
-    <input type="text" asp-for="surname" class="form-control" />
-    <br />
+                        <label>@localizer["Soyadınız"]</label>
+                        <input type="text" asp-for="surname" class="form-control" />
+                        <br />
 
-    @Html.Label("Mail Adresiniz")
-    <input type="text" asp-for="mail" class="form-control" />
-    <br />
+                        <label>@localizer["Mail Adresiniz"]</label>
+                        <input type="text" asp-for="mail" class="form-control" />
+                        <br />
 
-    @Html.Label("Şifreniz")
-    <input type="text" asp-for="password" class="form-control" />
-    <br />
+                        <label>@localizer["Şifreniz"]</label>
+                        <input type="text" asp-for="password" class="form-control" />
+                        <br />
 
-    @Html.Label("Şifre Tekrar ")
-    <input type="text" asp-for="confirmpassword" class="form-control" />
-    <br />
+                        <label>@localizer["Şifre Tekrar"]</label>
+                        <input type="text" asp-for="confirmpassword" class="form-control" />
+                        <br />
 
-    @Html.Label("Telefon Numaranız")
-    <input type="text" asp-for="phonenumber" class="form-control" />
-    <br />
+                        <label>@localizer["Telefon Numaranız"]</label>
+                        <input type="text" asp-for="phonenumber" class="form-control" />
+                        <br />
 
-    <div class="form-group">
-        <label>Resim Seçin</label>
-        <input type="file" asp-for="Image" />
+                        <div class="form-group">
+                            <label>@localizer["Resim Seçin"]</label>
+                            <input type="file" asp-for="Image" />
+                        </div>
+                        <br />
+
+                        <button class="btn btn-primary">@localizer["Bilgileri Güncelle"]</button>
+                        <p style="text-align:right">@localizer["Soru, görüş ve önerileriniz için"] <span class="text-bold-600"><a href="/Contact/Index" target="_blank">@localizer["tıklayınız..."]</a></span></p>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <br />
+</div>
 
-    <button class="btn btn-primary">Bilgileri Güncelle</button>
-</form>

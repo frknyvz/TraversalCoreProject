@@ -1,53 +1,66 @@
 ﻿@model List<Destination>
 
-<div class="col-12 mt-4">
-    <div class="card mb-4">
-        <div class="card-header pb-0 p-3">
-            <h6 class="mb-1">Son Rotalar</h6>
-            <p class="text-sm">Hemen Göz At</p>
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Son Rotalar</h4>
+            <a class="heading-elements-toggle">
+                <i class="fa fa-ellipsis-v font-medium-3"></i>
+            </a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li>
+                        <a data-action="reload">
+                            <i class="ft-rotate-cw"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="card-body p-3">
-            <div class="row">
-                @foreach (var x in Model)
-                {
-                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                        <div class="card card-blog card-plain">
-                            <div class="position-relative">
-                                <a class="d-block shadow-xl border-radius-xl">
-                                    <img src="@x.Image" style="width:400px; height:250px" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
-                                </a>
-                            </div>
-                            <div class="card-body px-1 pb-0">
-                                <p class="text-gradient text-dark mb-2 text-sm">@x.DayNight - @x.Price ₺</p>
-                                <a href="javascript:;">
-                                    <h5>
-                                        @x.City
-                                    </h5>
-                                </a>
-                                <p class="mb-4 text-sm">
-                                    @x.Details1.Substring(0,120) ...
-                                </p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-outline-primary btn-sm mb-0" target="_blank">Detaylar</a>
-                                    <div class="avatar-group mt-2">
-                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                            <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-1.jpg">
-                                        </a>
-                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                            <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-2.jpg">
-                                        </a>
-                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                            <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-3.jpg">
-                                        </a>
-                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                            <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-4.jpg">
-                                        </a>
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var x in Model)
+                    {
+                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                            <div class="card card-blog card-plain">
+                                <div class="position-relative">
+                                    <a class="d-block shadow-xl border-radius-xl">
+                                        <img src="@x.Image" style="width:400px; height:250px" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                    </a>
+                                </div>
+                                <div class="card-body px-1 pb-0">
+                                    <p class="text-gradient text-dark mb-2 text-sm">@x.DayNight - @x.Price ₺</p>
+                                    <a href="javascript:;">
+                                        <h5>
+                                            @x.City
+                                        </h5>
+                                    </a>
+                                    <p class="mb-4 text-sm">
+                                        @x.Details1.Substring(0,100) ...
+                                    </p>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-outline-primary btn-sm mb-0" target="_blank">Detaylar</a>
+                                        <div class="avatar-group mt-2">
+                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
+                                                <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-1.jpg">
+                                            </a>
+                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
+                                                <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-2.jpg">
+                                            </a>
+                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
+                                                <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-3.jpg">
+                                            </a>
+                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
+                                                <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-4.jpg">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </div>
     </div>

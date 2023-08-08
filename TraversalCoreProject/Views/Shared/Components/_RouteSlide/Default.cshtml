@@ -1,0 +1,45 @@
+﻿@model List<Destination>
+
+<div class="col-xl-4 col-lg-12">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="card-title">Hemen Göz At</h4>
+            </div>
+            <div id="carousel-area" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-area" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-area" data-slide-to="1"></li>
+                    <li data-target="#carousel-area" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img src="~/Traversal-Starter/assets/images/destinationimages/g1.jpg" class="d-block w-100" alt="First slide" style="height:360px">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Traversal-Starter/assets/images/destinationimages/g5.jpg" class="d-block w-100" alt="Second slide" style="height:360px">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Traversal-Starter/assets/images/destinationimages/g3.jpg" class="d-block w-100" alt="Third slide" style="height:360px">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel-area" role="button" data-slide="prev">
+                    <span class="la la-angle-left" aria-hidden="true"></span>
+                    <span class="sr-only">Geri</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-area" role="button" data-slide="next">
+                    <span class="la la-angle-right icon-next" aria-hidden="true"></span>
+                    <span class="sr-only">İleri</span>
+                </a>
+            </div>
+            <div class="card-body">
+                <a href="/Destination/Index/" class="card-link" target="_blank">Detaylar</a>
+                <span class="tags float-right">
+                    <span class="badge badge-pill badge-primary">#Seyahat</span>
+                    <span class="badge badge-pill badge-warning">#Rezervasyon</span>
+                    <span class="badge badge-pill badge-danger">#Tatil</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

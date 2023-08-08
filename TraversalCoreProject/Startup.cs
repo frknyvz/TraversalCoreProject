@@ -7,11 +7,19 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using TraversalCoreProject.CQRS.Handlers.DestinationHandlers;
 using TraversalCoreProject.Models;
@@ -66,7 +74,20 @@ namespace TraversalCoreProject
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            services.AddMvc();
+            services.AddLocalization(opt =>
+            {
+                opt.ResourcesPath = "Resources";
+            });
+
+            //services.Configure<RequestLocalizationOptions>(options =>
+            //{
+            //    options.SetDefaultCulture("tr");
+            //    options.AddSupportedUICultures("tr", "en", "fr");
+            //    options.FallBackToParentUICultures = true;
+            //    options.RequestCultureProviders.Clear();
+            //});
+
+            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
             services.ConfigureApplicationCookie(opt =>
             {
@@ -97,6 +118,25 @@ namespace TraversalCoreProject
             app.UseRouting();
 
             app.UseAuthorization();
+
+            var supportedCultures = new List<CultureInfo>
+            {
+                new CultureInfo("en"),
+                new CultureInfo("tr"),
+                new CultureInfo("fr"),
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures,
+                DefaultRequestCulture = new RequestCulture("tr")
+            });
+
+            //var supportedLang = new[] { "en", "fr", "es", "tr", "de" };
+            //var localizationOpt = new RequestLocalizationOptions().SetDefaultCulture(supportedLang[3]).AddSupportedCultures
+            //    (supportedLang).AddSupportedUICultures(supportedLang);
+            //app.UseRequestLocalization(localizationOpt);
 
             app.UseEndpoints(endpoints =>
             {
