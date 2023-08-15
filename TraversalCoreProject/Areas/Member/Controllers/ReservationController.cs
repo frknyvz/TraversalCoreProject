@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace TraversalCoreProject.Areas.Member.Controllers
 {
     [Area("Member")]
+    [Route("Member/[controller]/[action]/{id?}")]
     public class ReservationController : Controller
     {
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());

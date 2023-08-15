@@ -11,7 +11,7 @@ Author URL: http://w3layouts.com
 <html lang="zxx">
 
 <head>
-    <title>Invent Signup Form Responsive Widget Template | Home :: W3layouts</title>
+    <title>TRAVERSAL | ÜYE OL</title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
@@ -46,7 +46,7 @@ Author URL: http://w3layouts.com
                                 Deneyimli rehberler eşliğinde, harika bir tatil ve gezi fırsatları yakalamak mı istiyorsun ? Hemen
                                 sende aramıza katıl ve bu eğlenceli maceranın bir parçası ol!
                             </p>
-                            <a href="/Login/SignIn/" class="read-more-1 btn">Başlarken</a>
+                            <a href="/Login/SignIn/" class="read-more-1 btn">GİRİŞ YAP</a>
                         </div>
 
                     </div>
@@ -77,21 +77,15 @@ Author URL: http://w3layouts.com
                             <input type="email" asp-for="Mail" />
                             <span asp-validation-for="Mail" class="text-danger"></span>
                         </div>
-                        @*<div class="form-input">
-                        <label>Şifreniz</label>
-                        <span class="lnr lnr-lock"></span>
-                        <input type="password" asp-for="Password" class="form-control"/>
-                        </div>
-                        <div style="color:#ff0000" asp-validation-summary="ModelOnly"></div>*@
                         <div class="form-input">
                             <label>Şifreniz</label>
                             <input type="password" asp-for="Password" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <span asp-validation-for="Password" class="text-danger" required></span>
                         </div>
                         <div class="form-input">
                             <label>Şifreyi Onayla</label>
                             <input type="password" asp-for="ConfirmPassword" />
-                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger" required></span>
                         </div>
                         <div style="color:#ff0000" asp-validation-summary="ModelOnly"></div>
 

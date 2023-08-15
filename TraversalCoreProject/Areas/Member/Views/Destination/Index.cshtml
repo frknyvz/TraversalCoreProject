@@ -1,61 +1,87 @@
-﻿@using EntityLayer.Concrete
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@using EntityLayer.Concrete
 @model List<Destination>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
+<head>
+    <style>
+        .searchArea {
+            text-align:right;
+        }
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">Aktif Tur Rotalarımız</h2>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card-content collapse show">
-                <div class="card-body">
-                    <p class="card-text">Sitemizdeki aktif rotaları aşağıda görüntüleyebilirsiniz.</p>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Şehir</th>
-                                    <th>Süre</th>
-                                    <th>Kapasite</th>
-                                    <th>Fiyat</th>
-                                    <th>Detaylar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var x in Model)
-                                {
-                                    <tr>
-                                        <td>@x.DestinationID</td>
-                                        <td>@x.City</td>
-                                        <td>@x.DayNight</td>
-                                        <td>@x.Capacity</td>
-                                        <td>@x.Price₺</td>
-                                        <td><a href="/Destination/DestinationDetails/@x.DestinationID" class="btn btn-outline-info" target="_blank">Detaylar</a></td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+        #searchInput {
+            width:25%;
+            display:inline-block;
+            float:right;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">@localizer["Aktif Tur Rotalarımız"]</h2>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                        </ul>
                     </div>
-                    <p style="text-align:right">Soru, görüş ve önerileriniz için <span class="text-bold-600"><a href="/Contact/Index" target="_blank">tıklayınız...</a></span></p>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <p class="card-text">@localizer["Sitemizdeki aktif rotaları aşağıda görüntüleyebilirsiniz."]</p>
+                        <form asp-action="Index" method="get" asp-area="Member">
+                            <div class="searchArea">
+                                <p>
+                                    <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" id="searchInput" />
+                                    <br /><br />
+                                    <input type="submit" value="@localizer["Ara"]" class="btn btn-outline-primary" />
+                                    <input type="reset" class="btn btn-outline-danger" value="@localizer["Temizle"]" />
+                                </p>
+                            </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>@localizer["Şehir"]</th>
+                                        <th>@localizer["Süre"]</th>
+                                        <th>@localizer["Kapasite"]</th>
+                                        <th>@localizer["Fiyat"]</th>
+                                        <th>@localizer["Detaylar"]</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        <tr>
+                                            <td>@x.DestinationID</td>
+                                            <td>@x.City</td>
+                                            <td>@x.DayNight</td>
+                                            <td>@x.Capacity</td>
+                                            <td>@x.Price₺</td>
+                                            <td><a href="/Destination/DestinationDetails/@x.DestinationID" class="btn btn-outline-info" target="_blank">@localizer["Detaylar"]</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="text-align:right">@localizer["Soru, görüş ve önerileriniz için"] <span class="text-bold-600"><a href="/Contact/Index" target="_blank">@localizer["tıklayınız..."]</a></span></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</body>
+
 
 
 

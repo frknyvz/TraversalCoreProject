@@ -8,7 +8,7 @@ using TraversalCoreProject.CQRS.Queries.GuideQueries;
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class GuideMediatRController : Controller
     {
         private readonly IMediator _mediator;

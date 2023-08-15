@@ -9,7 +9,7 @@ using TraversalCoreProject.Areas.Admin.Models;
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class ApiHotelSearchController : Controller
     {
         public async Task<IActionResult> Index()

@@ -9,9 +9,9 @@
 
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
-    @await Html.PartialAsync("/Views/MemberLayoutPartial/_NavbarPartial.cshtml")
+    @await Component.InvokeAsync("_NavbarPartial")
 
-    @await Html.PartialAsync("/Views/MemberLayoutPartial/_Navbar2Partial.cshtml")
+    @await Html.PartialAsync("/Views/MemberLayoutPartial/_Navbar2Partial.cshtml") 
 
     <div class="app-content content">
         <div class="content-wrapper">

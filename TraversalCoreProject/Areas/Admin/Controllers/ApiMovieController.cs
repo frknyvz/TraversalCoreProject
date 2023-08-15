@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class ApiMovieController : Controller
     {
         public async Task<IActionResult> Index()

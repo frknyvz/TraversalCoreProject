@@ -1,48 +1,71 @@
-﻿<div class="col-xl-4 col-lg-12">
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<div class="col-xl-4 col-lg-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title" id="heading-multiple-thumbnails">İstatistikler</h4>
+            <h4 class="card-title" id="heading-multiple-thumbnails">@localizer["İstatistikler"]</h4>
             <a class="heading-elements-toggle">
                 <i class="la la-ellipsis-v font-medium-3"></i>
             </a>
             <div class="heading-elements">
                 <span class="avatar">
-                    <img src="~/member/theme-assets/images/portrait/small/avatar-s-2.png" alt="avatar">
+                    <img src="@ViewBag.userImage" alt="avatar">
                 </span>
             </div>
         </div>
         <div class="card-content">
             <div class="card-body">
-                <h4>Kişisel İstatistiklerim </h4>
-                &nbsp;
-                <p class="card-text">
-                    Toplam Başarısız Giriş:
-                </p>
-                <p class="card-text">
-                    Aktif Rezervasyon Sayınız:
-                </p>
-                <p class="card-text">
-                    Geçmiş Rezervasyon Sayınız:
-                </p>
-                <p class="card-text">
-                    Onay Bekleyen Rezervasyon Sayınız:
-                </p>
-                &nbsp;
-                <h4>Genel İstatistikler </h4>
-                &nbsp;
-                <p class="card-text">
-                    Toplam Rota Sayısı:
-                </p>
-                <p class="card-text">
-                    Toplam Rehber Sayısı:
-                </p>
-                <p class="card-text">
-                    Toplam Ziyaretçi Sayısı:
-                </p>
-                <p class="card-text">
-                    Genel Puan:
-                </p>
+                <div style="text-align:center;margin-bottom:20px;margin-top:5px;background-color:#EDEDED">
+                    <i class="la la-bar-chart"></i>
+                    <label style="margin-left:5px"><b>@localizer["Kişisel İstatistiklerim"]</b></label>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @localizer["Toplam Başarısız Giriş:"] @ViewBag.failedCount
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @localizer["Aktif Rezervasyon Sayınız:"] @ViewBag.activeRes
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @localizer["Geçmiş Rezervasyon Sayınız:"] @ViewBag.oldRes
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @localizer["Onay Bekleyen Rezervasyon Sayınız:"] @ViewBag.waitingRes
+                    </li>
+                </ul>
+                <div style="text-align:center;margin-bottom:20px;margin-top:45px;background-color:#EDEDED">
+                    <i class="la la-bar-chart"></i>
+                    <label style="margin-left:5px"><b>@localizer["Genel İstatistikler"]</b></label>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @localizer["Toplam Rota Sayısı:"] @ViewBag.routeCount
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @localizer["Toplam Rehber Sayısı:"] @ViewBag.guideCount
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @localizer["Toplam Ziyaretçi Sayısı:"] @ViewBag.visitorCount
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @localizer["Genel Puan:"] 4,2 / 5
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
+
+
+

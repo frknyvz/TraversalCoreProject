@@ -1,4 +1,5 @@
-﻿@model EntityLayer.Concrete.Reservation
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@model EntityLayer.Concrete.Reservation
 @{
     ViewData["Title"] = "NewReservation";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
@@ -9,7 +10,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title">Yeni Rezervasyon</h2>
+                <h2 class="card-title">@localizer["Yeni Rezervasyon"]</h2>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -22,26 +23,26 @@
             </div>
             <div class="card-content collapse show">
                 <div class="card-body">
-                    <p class="card-text">Sitemiz üzerinde yer alan lokasyonlara ait rezervasyonlarınızı aşağıdan oluşturabilirsiniz.</p>
+                    <p class="card-text">@localizer["Sitemiz üzerinde yer alan lokasyonlara ait rezervasyonlarınızı aşağıdan oluşturabilirsiniz."]</p>
                     <form method="post">
                         <div class="form-group">
-                            @Html.Label("Lokasyon")
+                            <label>@localizer["Lokasyon"]</label>
                             @Html.DropDownListFor(x=>x.Destination,(List<SelectListItem>)ViewBag.v,new {@class="form-control"})
                         </div>
                         <div class="form-group">
-                            @Html.Label("Kişi Sayısı")
+                            <label>@localizer["Kişi Sayısı"]</label>
                             <input type="text" asp-for="PersonCount" class="form-control" />
                         </div>
                         <div class="form-group">
-                            @Html.Label("Tarih")
+                            <label>@localizer["Tarih"]</label>
                             <input type="date" asp-for="ReservationDate" class="form-control" />
                         </div>
                         <div class="form-group">
-                            @Html.Label("Açıklama (Varsa)")
+                            <label>@localizer["Açıklama (Varsa)"]</label>
                             <input type="text" asp-for="Description" class="form-control" />
                         </div>
-                        <button class="btn btn-success">Rezervasyon Yap</button>
-                        <p style="text-align:right">Soru, görüş ve önerileriniz için <span class="text-bold-600"><a href="/Contact/Index" target="_blank">tıklayınız...</a></span></p>
+                        <button type="button" class="btn btn-success btn-min-width mr-1 mb-1">@localizer["Rezervasyon Yap"]</button>
+                        <p style="text-align:right">@localizer["Soru, görüş ve önerileriniz için"] <span class="text-bold-600"><a href="/Contact/Index" target="_blank">@localizer["tıklayınız..."]</a></span></p>
                     </form>
                 </div>
             </div>
@@ -51,7 +52,7 @@
 
 <script>
     window.onload = (function () {
-        alert('Rezervasyonunuz başlangıçta onay beliyor şeklinde alınacaktır. Rezervasyon onaylanma süreci ile ilgili lütfen "Aktif Rezervasyonlarım" menüsünü takip ediniiz');
+        alert('@localizer["Rezervasyonunuz başlangıçta onay bekliyor şeklinde alınacaktır. Rezervasyon onaylanma süreci ile ilgili lütfen Aktif Rezervasyonlarım menüsünü takip ediniz"]');
     });
 </script>
 

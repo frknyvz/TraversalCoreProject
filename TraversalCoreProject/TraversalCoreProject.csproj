@@ -38,6 +38,8 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="Resources\Areas\Member\Views\Dashboard\" />
+    <Folder Include="Resources\Views\Shared\Components\_NavbarPartial - Kopyala\" />
     <Folder Include="wwwroot\pdfReports\" />
     <Folder Include="wwwroot\userimages\" />
   </ItemGroup>

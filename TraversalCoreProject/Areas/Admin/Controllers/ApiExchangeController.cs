@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class ApiExchangeController : Controller
     {
         public async Task<ActionResult> Index()

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 using TraversalCoreProject.Models;
 
@@ -12,11 +14,13 @@ namespace TraversalCoreProject.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<AppRole> _roleManager;
 
-        public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -65,7 +69,17 @@ namespace TraversalCoreProject.Controllers
                 var result = await _signInManager.PasswordSignInAsync(p.username, p.password, false, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Profile", new { area = "Member" });
+                    var user = _userManager.Users.FirstOrDefault(x => x.UserName == p.username);
+                    var roles = _roleManager.Roles.ToList();
+                    var userRoles = await _userManager.GetRolesAsync(user);
+                    foreach (var x in userRoles)
+                    {
+                        if (x == "Admin")
+                        {
+                            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                        }
+                    }
+                    return RedirectToAction("MemberDashboard", "Dashboard", new { area = "Member" });
                 }
                 else
                 {
@@ -73,6 +87,11 @@ namespace TraversalCoreProject.Controllers
                 }
             }
             return View();
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("SignIn");
         }
     }
 }

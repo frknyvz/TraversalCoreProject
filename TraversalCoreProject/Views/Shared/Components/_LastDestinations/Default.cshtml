@@ -1,9 +1,10 @@
-﻿@model List<Destination>
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@model List<Destination>
 
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Son Rotalar</h4>
+            <h4 class="card-title">@localizer["Son Rotalar"]</h4>
             <a class="heading-elements-toggle">
                 <i class="fa fa-ellipsis-v font-medium-3"></i>
             </a>
@@ -40,7 +41,7 @@
                                         @x.Details1.Substring(0,100) ...
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-outline-primary btn-sm mb-0" target="_blank">Detaylar</a>
+                                        <a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-outline-primary btn-sm mb-0" target="_blank">@localizer["Detaylar"]</a>
                                         <div class="avatar-group mt-2">
                                             <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
                                                 <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-1.jpg">
