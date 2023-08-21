@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Detaylar" xml:space="preserve">
-    <value>Detaylar</value>
+  <data name="Devamını Oku.." xml:space="preserve">
+    <value>Devamını Oku..</value>
   </data>
   <data name="Son Rotalar" xml:space="preserve">
     <value>Son Rotalar</value>

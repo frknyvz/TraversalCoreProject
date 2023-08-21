@@ -31,29 +31,20 @@
                                     </a>
                                 </div>
                                 <div class="card-body px-1 pb-0">
-                                    <p class="text-gradient text-dark mb-2 text-sm">@x.DayNight - @x.Price ₺</p>
-                                    <a href="javascript:;">
-                                        <h5>
+                                    <p class="text-gradient text-dark mb-2 text-sm">@x.DayNight - @x.Price ₺</p> 
+                                    <a href="/Destination/DestinationDetails/@x.DestinationID/">
+                                        <h4>
                                             @x.City
-                                        </h5>
+                                        </h4>
                                     </a>
                                     <p class="mb-4 text-sm">
-                                        @x.Details1.Substring(0,100) ...
+                                        @x.Details1.Substring(0,111) ...
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-outline-primary btn-sm mb-0" target="_blank">@localizer["Detaylar"]</a>
+                                        <a href="/Destination/DestinationDetails/@x.DestinationID/" class="btn btn-outline-primary btn-sm mb-0 mt-2" target="_blank">@localizer["Devamını Oku.."]</a>
                                         <div class="avatar-group mt-2">
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                                <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-1.jpg">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                                <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-2.jpg">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                                <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-3.jpg">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                                <img alt="Image placeholder" src="~/soft-ui-dashboard/assets/img/team-4.jpg">
+                                            <a href="/Guide/Index/" class="avatar avatar-m rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@x.Guide.Name" target="_blank">
+                                                <img alt="Image placeholder" src="@x.Guide.Image">
                                             </a>
                                         </div>
                                     </div>

@@ -7,7 +7,6 @@ using System.Linq;
 namespace TraversalCoreProject.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AllowAnonymous]
     [Route("Member/[controller]/[action]")]
     public class DestinationController : Controller
     {

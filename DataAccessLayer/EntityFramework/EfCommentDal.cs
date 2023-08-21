@@ -28,5 +28,13 @@ namespace DataAccessLayer.EntityFramework
                 return c.Comments.Where(x => x.DestinationID == id).Include(x => x.AppUser).ToList();
             }
         }
+
+        public List<Comment> GetListWithCommentById(int id)
+        {
+            using (var c = new Context())
+            {
+                return c.Comments.Include(x => x.Destination).Include(x => x.AppUser).Where(x => x.AppUserID == id).ToList();
+            }
+        }
     }
 }

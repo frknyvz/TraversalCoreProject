@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,11 @@ namespace BusinessLayer.Concrete
         public List<Comment> TGetListCommentWithDestinationAndUser(int id)
         {
             return _commentDal.GetListCommentWithDestinationAndUser(id);
+        }
+
+        public List<Comment> TGetListWithCommentById(int id)
+        {
+            return _commentDal.GetListWithCommentById(id);
         }
     }
 }

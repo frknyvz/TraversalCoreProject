@@ -1,291 +1,60 @@
 ﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
-
-    var today = DateTime.Now.Date;
-    var minDate = new DateTime(today.Year, 1, 1);
-    var maxDate = new DateTime(today.Year, 12, 31);
 }
 
-<div>
-    <c1-calendar value="@today" min="@minDate" max="maxDate" month-view=true width="300px">
-    </c1-calendar>
-</div>
-
-
-
-
-@* @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_MemberLayout.cshtml";
-
-    var zoomLevels = new[] { "month", "year", "decade", "century" };
-    var weekNumberRules = new[] { "auto", "firstDay", "firstFourDays", "fullWeek" };
-    var weekDays = new[] {
-        new { Id = 0, Text = "Sunday" },
-        new { Id = 1, Text = "Monday" },
-        new { Id = 2, Text = "Tuesday" },
-        new { Id = 3, Text = "Wednesday" },
-        new { Id = 4, Text = "Thursday" },
-        new { Id = 5, Text = "Friday" },
-        new { Id = 6, Text = "Saturday" },
-    };
-}
-
-<style>
-    #container {
-        display: flex;
-    }
-
-    .calendar-container {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .dx-calendar-cell:not(.dx-calendar-other-month) .weekend,
-    .dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
-        text-shadow: none;
-        font-weight: bold;
-    }
-
-    .dx-calendar-cell:not(.dx-calendar-other-month) .weekend {
-        color: #3030FF;
-    }
-
-    .dx-state-disabled.dx-calendar .dx-calendar-cell:not(.dx-calendar-other-month) .weekend {
-        color: #8080FF;
-    }
-
-    .dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
-        color: #FF3030;
-    }
-
-    .dx-state-disabled.dx-calendar .dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
-        color: #FF8080;
-    }
-
-    .dx-calendar-week-number-cell .week-number {
-        font-style: italic;
-    }
-
-    .caption {
-        font-weight: 500;
-        font-size: 18px;
-    }
-
-    .options {
-        padding: 20px;
-        background-color: rgba(191, 191, 191, 0.15);
-    }
-
-    .option {
-        margin-top: 10px;
-    }
-</style>
-
+<head>
+    <meta charset='utf-8' />
+    <link href="/lib/fullcalendar/main.css" rel="stylesheet" />
+</head>
 
 <body>
-    <div id="container">
-        <div class="calendar-container">
-            @(Html.DevExtreme().Calendar()
-                .ID("calendar-container")
-                .Value(DateTime.Now)
-                .Disabled(false)
-                .FirstDayOfWeek(FirstDayOfWeek.Sunday)
-                .ZoomLevel(CalendarZoomLevel.Month)
-                .OnValueChanged("calendar_valueChanged")
-                .OnOptionChanged("calendar_optionChanged")
-                )
-        </div>
-        <div class="options">
-            <div class="caption">Options</div>
-            <div class="option">
-                @(Html.DevExtreme().CheckBox()
-                    .Text("Set minimum date")
-                    .OnValueChanged("minValue_changed")
-                    )
-            </div>
-            <div class="option">
-                @(Html.DevExtreme().CheckBox()
-                    .Text("Set maximum date")
-                    .OnValueChanged("maxValue_changed")
-                    )
-            </div>
-            <div class="option">
-                @(Html.DevExtreme().CheckBox()
-                    .Text("Disable weekends")
-                    .OnValueChanged("disabledDates_changed")
-                    )
-            </div>
-            <div class="option">
-                @(Html.DevExtreme().CheckBox()
-                    .Text("Show week numbers")
-                    .OnValueChanged("showWeekNumbers_changed")
-                    )
-            </div>
-            <div class="option">
-                @(Html.DevExtreme().CheckBox()
-                    .Text("Use custom cell template")
-                    .Value(false)
-                    .OnValueChanged("useCustomTemplate")
-                    )
-            </div>
-            <div class="option">
-                @(Html.DevExtreme().CheckBox()
-                    .Text("Disable the calendar")
-                    .OnValueChanged("disabledState_changed")
-                    )
-            </div>
-            <div class="option">
-                <span>First day of week</span>
-                @(Html.DevExtreme().SelectBox()
-                    .DataSource(weekDays)
-                    .InputAttr("aria-label", "First Day of Week")
-                    .Value(FirstDayOfWeek.Sunday)
-                    .ValueExpr("Id")
-                    .DisplayExpr("Text")
-                    .OnValueChanged("firstDayOfWeek_changed")
-                    )
-            </div>
-            <div class="option">
-                <span>Week number rule</span>
-                @(Html.DevExtreme().SelectBox()
-                    .DataSource(weekNumberRules)
-                    .Value(WeekNumberRule.Auto)
-                    .InputAttr("aria-label", "Week Number Rule")
-                    .OnValueChanged("weekNumberRule_changed")
-                    )
-            </div>
-            <div class="option">
-                <span>Zoom level</span>
-                @(Html.DevExtreme().SelectBox()
-                    .ID("zoom-level")
-                    .DataSource(zoomLevels)
-                    .InputAttr("aria-label", "Zoom Level")
-                    .Value(zoomLevels[0])
-                    .OnValueChanged("zoomLevel_changed")
-                    )
-            </div>
-            <div class="option">
-                <span>Selected date</span>
-                @(Html.DevExtreme().DateBox()
-                    .InputAttr("aria-label", "Date")
-                    .ID("selected-date")
-                    .Value(DateTime.Now)
-                    .OnValueChanged("selectedDate_changed")
-                    )
-            </div>
-        </div>
-    </div>
+@*     <select class="form-control" onchange="titleChanged(this)">
+        <option value="">Tümü</option>
+        @foreach (var item in ViewBag.TitleList)
+        {
+            <option value="@item">@item</option>
+        }
+    </select> 
+ *@    <label class="form-control mt-12">@ViewBag.TitleList</label>
+    <div id='calendar'></div>
 </body>
 
-
+<script src='/lib/fullcalendar/main.js'></script>
 <script>
-    var date = new Date().getTime();
-    var msInDay = 1000 * 60 * 60 * 24;
+    var title = "";
+    var calendar;
 
-    function getCalendarInstance() {
-        return $("#calendar-container").dxCalendar("instance");
-    }
-
-    function getDateBoxInstance() {
-        return $("#selected-date").dxDateBox("instance");
-    }
-
-    function isWeekend(date) {
-        var day = date.getDay();
-
-        return day === 0 || day === 6;
-    }
-
-    function getCellTemplate(data) {
-        var cssClass = "";
-
-        if (data.view === 'month') {
-            if (!data.date) {
-                cssClass = "week-number";
-            } else {
-                if (isWeekend(data.date))
-                    cssClass = "weekend";
-
-                $.each([[1, 0], [4, 6], [25, 11]], function (_, item) {
-                    if (data.date.getDate() === item[0] && data.date.getMonth() === item[1]) {
-                        cssClass = "holiday";
-                        return false;
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'tr',
+            eventSources: [
+                {
+                    url: '/Calendar/GetData',
+                    method: 'POST',
+                    extraParams: function () {
+                        return {
+                            title: title
+                        }
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        return response;
+                    },
+                    failure: function () {
+                        // alert('there was an error while fetching events!');
                     }
-                });
-            }
-        }
+                }
+            ]
+        });
+        calendar.render();
+    });
 
-        return "<span class='" + cssClass + "'>" + data.text + "</span>";
+    function titleChanged(e) {
+        titleChanged = e.value;
+        calendar.refetchEvents();
     }
 
-    function calendar_valueChanged(data) {
-        getDateBoxInstance().option("value", data.value);
-    }
-
-    function calendar_optionChanged(data) {
-        if (data.name === 'zoomLevel') {
-            $("#zoom-level").dxSelectBox("instance").option('value', data.value);
-        }
-    }
-
-    function minValue_changed(data) {
-        const minDate = new Date(date - msInDay * 3);
-
-        getCalendarInstance().option("min", data.value ? minDate : null);
-        getDateBoxInstance().option("min", data.value ? minDate : null);
-    }
-
-    function maxValue_changed(data) {
-        const maxDate = new Date(date + msInDay * 3);
-
-        getCalendarInstance().option("max", data.value ? maxDate : null);
-        getDateBoxInstance().option("max", data.value ? maxDate : null);
-    }
-
-    function disabledDates_changed(data) {
-        var calendar = getCalendarInstance();
-        if (data.value) {
-            calendar.option("disabledDates", function (data) {
-                return data.view === "month" && isWeekend(data.date);
-            });
-        } else {
-            calendar.option("disabledDates", null);
-        }
-    }
-
-    function firstDayOfWeek_changed(data) {
-        getCalendarInstance().option("firstDayOfWeek", data.value);
-    }
-
-    function weekNumberRule_changed(data) {
-        getCalendarInstance().option("weekNumberRule", data.value);
-    }
-
-    function showWeekNumbers_changed(data) {
-        getCalendarInstance().option("showWeekNumbers", data.value);
-    }
-
-    function useCustomTemplate(data) {
-        getCalendarInstance().option("cellTemplate", data.value ? getCellTemplate : "cell");
-    }
-
-    function disabledState_changed(data) {
-        getCalendarInstance().option("disabled", data.value);
-    }
-
-    function zoomLevel_changed(data) {
-        getCalendarInstance().option("zoomLevel", data.value);
-    }
-
-    function selectedDate_changed(data) {
-        getCalendarInstance().option("value", data.value);
-    }
 </script>
-
-
- *@

@@ -1,8 +1,76 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@using EntityLayer.Concrete
+@model List<Comment>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    int count = 0;
 }
 
-<h1>Index</h1>
+@if (!Model.Any())
+{
+    <div class="card mt-4">
+        <div class="card-header bg-dark text-white">
+            <h5 class="text-white">@localizer["Sonuç Bulunamadı.."]</h5>
+        </div>
+        <div class="card-body">
+            <h6>@localizer["Herhangi Bir Yorumunuz Bulunmamaktadır."]</h6>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">@localizer["Yorumlarım"]</h2>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <p class="card-text">@localizer["Sitemizi kullanarak yapmış olduğunuz yorumları aşağıda görüntüleyebilirsiniz."]</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>@localizer["Kullanıcı"]</th>
+                                        <th>@localizer["Rota"]</th>
+                                        <th>@localizer["İçerik"]</th>
+                                        <th>@localizer["Tarih"]</th>
+                                        <th>@localizer["Detaylar"]</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.AppUser.Name @x.AppUser.Surname</td>
+                                            <td>@x.Destination.City</td>
+                                            <td>@x.CommentContent</td>
+                                            <td>@(((DateTime)x.CommentDate).ToString("dd MMMM yyyy"))</td>
+                                            <td><a href="/Destination/DestinationDetails/@x.DestinationID" class="btn btn-outline-info" target="_blank">@localizer["Görüntüle"]</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="text-align:right">@localizer["Soru, görüş ve önerileriniz için"] <span class="text-bold-600"><a href="/Contact/Index" target="_blank">@localizer["tıklayınız..."]</a></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 

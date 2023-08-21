@@ -25,7 +25,7 @@ namespace DataAccessLayer.EntityFramework
         {
             using (var context = new Context())
             {
-                var values = context.Destinations.Take(4).OrderByDescending(x=>x.DestinationID).ToList();
+                var values = context.Destinations.Take(4).OrderByDescending(x=>x.DestinationID).Include(x => x.Guide).ToList();
                 return values;
             } 
         }
