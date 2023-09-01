@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _reservationDal = reservationDal;
         }
 
+        public List<Reservation> GetListReservationWithUserDestination(int id)
+        {
+            return _reservationDal.GetListReservationWithUserDestination(id);
+        }
+
         public List<Reservation> GetListWithReservationByAccepted(int id)
         {
             return _reservationDal.GetListWithReservationByAccepted(id);
@@ -50,7 +55,7 @@ namespace BusinessLayer.Concrete
 
         public List<Reservation> TGetList()
         {
-            throw new NotImplementedException();
+            return _reservationDal.GetList();
         }
 
         public void TUpdate(Reservation t)

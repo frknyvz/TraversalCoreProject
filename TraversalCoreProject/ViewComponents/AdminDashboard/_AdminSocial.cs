@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccessLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace TraversalCoreProject.ViewComponents.AdminDashboard
 {
-    public class _DestinationStatistic2 : ViewComponent
+    public class _AdminSocial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

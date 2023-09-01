@@ -1,0 +1,120 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+
+<head>
+
+</head>
+<body>
+    <div class="col-md">
+        <div class="card mb-3">
+            <h5 class="card-header">Son İşlemler</h5>
+            <div class="card-body">
+                <div class="table-responsive text-nowrap mb-2">
+                    <table class="table" id="sortLastActionsTable">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable(0)">Kullanıcı</th>
+                                <th onclick="sortTable(1)">Rota</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach (var x in Model)
+                            {
+                                <tr class="table-secondary">
+                                    <td>
+                                        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                            <li data-bs-toggle="tooltip"
+                                                data-popup="tooltip-custom"
+                                                data-bs-placement="top"
+                                                class="avatar avatar-s pull-up">
+                                                <img src="@x.AppUser.ImageUrl" alt="Avatar" class="rounded-circle" />
+                                            </li>
+                                            <li>
+                                                &nbsp; @x.AppUser.Name @x.AppUser.Surname
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>@x.Destination.City</td>
+                                    <td>@(((DateTime)x.ReservationDate).ToString("dd MMMM yyyy"))</td>
+                                    @if (x.Status == "Onaylandı")
+                                    {
+                                        <td><span class="badge bg-label-success me-1"><strong>@x.Status</strong></span></td>
+                                    }
+                                    else if (x.Status == "Onay Bekliyor")
+                                    {
+                                        <td><span class="badge bg-label-info me-1"><strong>@x.Status</strong></span></td>
+                                    }
+                                    else
+                                    {
+                                        <td><span class="badge bg-label-warning me-1"><strong>@x.Status</strong></span></td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("sortLastActionsTable");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+

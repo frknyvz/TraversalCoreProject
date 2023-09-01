@@ -1,123 +1,188 @@
 ﻿<ul class="menu-inner py-1">
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Ana Sayfa</span>
+    </li>
     <li class="menu-item">
         <a href="/Admin/Dashboard/Index/" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-smile"></i>
             <div data-i18n="Analytics">Ana Sayfa</div>
         </a>
     </li>
-    <li class="menu-item">
-        <a href="/Admin/Destination/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-trip"></i>
-            <div data-i18n="Analytics">Rotalar</div>
-        </a>
+
+    @* ------------------------------------Tables------------------------------------ *@
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Tablolar</span>
     </li>
     <li class="menu-item">
-        <a href="/Admin/DestinationCQRS/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-trip"></i>
-            <div data-i18n="Analytics">Rotalar CQRS</div>
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-table"></i>
+            <div data-i18n="Analytics">Tablolar</div>
         </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="/Admin/Destination/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-trip"></i>
+                    <div data-i18n="Analytics">Rotalar</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/City/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-buildings"></i>
+                    <div data-i18n="Analytics">Şehir - Rota İşlemleri</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/Comment/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-comment-detail"></i>
+                    <div data-i18n="Analytics">Yorumlar</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/User/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-group"></i>
+                    <div data-i18n="Analytics">Kulanıcılar</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/ContactUs/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-envelope"></i>
+                    <div data-i18n="Analytics">Gelen Mesajlar</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/Guide/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-happy-beaming"></i>
+                    <div data-i18n="Analytics">Rehberler</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/Announcement/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+                    <div data-i18n="Analytics">Duyurular</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    @* ------------------------------------Others------------------------------------ *@
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Diğer İşlemler</span>
     </li>
     <li class="menu-item">
-        <a href="/Admin/City/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-buildings"></i>
-            <div data-i18n="Analytics">Şehir - Rota İşlemleri</div>
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-analyse"></i>
+            <div data-i18n="Analytics">Diğer İşlemler</div>
         </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="/Admin/DestinationCQRS/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-trip"></i>
+                    <div data-i18n="Analytics">Rotalar CQRS</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/GuideMediatR/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-happy-beaming"></i>
+                    <div data-i18n="Analytics">Rehberler (MediatR)</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/VisitorApi/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-search-alt"></i>
+                    <div data-i18n="Analytics">Ziyaretçiler</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/Mail/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-mail-send"></i>
+                    <div data-i18n="Analytics">Mail Gönder</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/ApiMovie/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-camera-movie"></i>
+                    <div data-i18n="Analytics">IMDB En İyi 100</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/ApiExchange/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dollar-circle"></i>
+                    <div data-i18n="Analytics">Güncel Kur Bilgileri</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/Account/Index" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-money"></i>
+                    <div data-i18n="Analytics">Para Transferi</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/ApiHotelSearch/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-hotel"></i>
+                    <div data-i18n="Analytics">Otel Arama</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
+
+    @* ------------------------------------Reports------------------------------------ *@
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Raporlar</span>
     </li>
     <li class="menu-item">
-        <a href="/Admin/Comment/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-comment-detail"></i>
-            <div data-i18n="Analytics">Yorumlar</div>
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-file"></i>
+            <div data-i18n="Analytics">Raporlar</div>
         </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="/Excel/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-report"></i>
+                    <div data-i18n="Analytics">Excel Raporları</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/PdfReport/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-file-pdf"></i>
+                    <div data-i18n="Analytics">PDF Raporları</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
+
+    @* ------------------------------------Management------------------------------------ *@
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Yönetici İşlemleri</span>
     </li>
     <li class="menu-item">
-        <a href="/Admin/User/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-group"></i>
-            <div data-i18n="Analytics">Kulanıcılar</div>
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-check-shield"></i>
+            <div data-i18n="Analytics">Yönetici İşlemleri</div>
         </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="index.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
+                    <div data-i18n="Analytics">Şifre İşlemleri</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/Admin/Role/Index/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user-check"></i>
+                    <div data-i18n="Analytics">Rol İşlemleri</div>
+                </a>
+            </li>
+        </ul>
     </li>
-    <li class="menu-item">
-        <a href="/Admin/ContactUs/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-envelope"></i>
-            <div data-i18n="Analytics">Gelen Mesajlar</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/Guide/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-happy-beaming"></i>
-            <div data-i18n="Analytics">Rehberler</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/GuideMediatR/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-happy-beaming"></i>
-            <div data-i18n="Analytics">Rehberler (MediatR)</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/Mail/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-mail-send"></i>
-            <div data-i18n="Analytics">Mail Gönder</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/Announcement/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
-            <div data-i18n="Analytics">Duyurular</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/VisitorApi/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-search-alt"></i>
-            <div data-i18n="Analytics">Ziyaretçiler</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/ApiMovie/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-camera-movie"></i>
-            <div data-i18n="Analytics">IMDB En İyi 100</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/ApiExchange/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-dollar-circle"></i>
-            <div data-i18n="Analytics">Güncel Kur Bilgileri</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/ApiHotelSearch/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-hotel"></i>
-            <div data-i18n="Analytics">Otel Arama</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Excel/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bxs-report"></i>
-            <div data-i18n="Analytics">Excel Raporları</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/PdfReport/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bxs-file-pdf"></i>
-            <div data-i18n="Analytics">PDF Raporları</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/Account/Index" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-money"></i>
-            <div data-i18n="Analytics">Para Transferi</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="index.html" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
-            <div data-i18n="Analytics">Şifre İşlemleri</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="/Admin/Role/Index/" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-user-check"></i>
-            <div data-i18n="Analytics">Rol İşlemleri</div>
-        </a>
+
+
+    @* ------------------------------------Log Out------------------------------------ *@
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Çıkış Yap</span>
     </li>
     <li class="menu-item">
         <a href="/Login/Logout/" class="menu-link">

@@ -30,9 +30,14 @@
 
         @await Component.InvokeAsync("_DestinationStatistic")
 
-        @await Component.InvokeAsync("_DestinationStatistic2")
+        @await Component.InvokeAsync("_AdminSocial")
 
         @await Component.InvokeAsync("_AdminGuideList")
+
+    </div>
+    <div class="row">
+
+        @await Component.InvokeAsync("_DestinationTable")
 
     </div>
     <div class="content-backdrop fade"></div>
