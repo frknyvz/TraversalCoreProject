@@ -1,4 +1,6 @@
-﻿<head>
+﻿@model EntityLayer.Concrete.Destination
+
+<head>
     <title>Ana Sayfa | Traversal </title>
 </head>
 <body>
@@ -11,34 +13,44 @@
                     <div class="container">
                         <div class="banner-infhny">
                             <h3>Traversal ile Tatil Planı Yapmak Çok Kolay</h3>
-                            <h6 class="mb-3">Hemen bir sonraki maceranı planla</h6>
+                            <h6 class="mb-3">Bir sonraki maceranı planla</h6>
                             <div class="flex-wrap search-wthree-field mt-md-5 mt-4">
-                                <form action="#" method="post" class="booking-form">
+
+                                <form action="/Destination/DestinationDetails/" method="post" class="booking-form">
+                                    @* @(Model.DestinationID==4?Url.Action("DestinationDetails","Destination"):Url.Action("DestinationDetails","Destination")) *@
                                     <div class="row book-form">
-                                        <div class="form-input col-md-4 mt-md-0 mt-3">
+                                        <div class="form-input col-md-8 mt-md-0 mt-3">
 
-                                            <select name="selectpicker" class="selectpicker">
-                                                <option value="eastern-europe">Doğu Avrupa</option>
-                                                <option value="europe">Batı Avrupa</option>
-                                                <option value="south-america">Güney Amerika</option>
-                                                <option value="africa">Afrika</option>
-                                                <option value="america">Kuzey Amerika</option>
-                                                <option value="asia">Asya</option>
-                                            </select>
+                                            @*                                             <select name="selectpicker" class="selectpicker">
+                                            <option value="eastern-europe">Doğu Avrupa</option>
+                                            <option value="europe">Batı Avrupa</option>
+                                            <option value="south-america">Güney Amerika</option>
+                                            <option value="africa">Afrika</option>
+                                            <option value="america">Kuzey Amerika</option>
+                                            <option value="asia">Asya</option>
+                                            </select> *@
+
+                                            <div asp-validation-summary="ModelOnly"></div>
+                                            <select name="dest" id="destID" asp-for="DestinationID" class="selectpicker" asp-items="@ViewBag.destList"></select>
+                                            <span asp-validation-for="City" class="text-danger"></span>
 
                                         </div>
-                                        <div class="form-input col-md-4 mt-md-0 mt-3">
-
-                                            <input type="date" name="" placeholder="Date" required="">
-                                        </div>
+                                        @*                                         <div class="form-input col-md-4 mt-md-0 mt-3">
+                                        <input type="date" name="" placeholder="Date" required="">
+                                        </div> *@
                                         <div class="bottom-btn col-md-4 mt-md-0 mt-3">
-                                            <button class="btn btn-style btn-secondary">
+                                            <button type="submit" class="btn btn-style btn-secondary" disabled>
                                                 <span class="fa fa-search mr-3"
-                                                      aria-hidden="true"></span> Ara
+                                                      aria-hidden="true"></span>(In Progress)
                                             </button>
                                         </div>
                                     </div>
                                 </form>
+
+                                @*                                 @using (Html.BeginForm("DestinationDetails", "Destination", FormMethod.Post, new { @class = "booking-form" }))
+                                { } *@
+
+
                             </div>
                         </div>
                     </div>
@@ -47,4 +59,7 @@
         </div>
     </section>
 </body>
+<script>
+
+</script>
 

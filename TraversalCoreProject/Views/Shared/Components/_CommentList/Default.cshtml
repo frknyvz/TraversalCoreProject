@@ -1,32 +1,36 @@
 ﻿@using EntityLayer.Concrete
 @model List<Comment>
+<head>
 
-<div class="comments mt-5">
-    <h4 class="side-title ">Yorumlar (@ViewBag.commentCount)</h4>
-    @foreach (var x in Model)
-    {
-        <div class="media mt-4">
-            <div class="img-circle">
-                <img src="@x.AppUser.ImageUrl" class="img-fluid" alt="...">
+</head>
+    <body>
+    <div class="comments mt-5">
+        <h4 class="side-title">Yorumlar (@ViewBag.commentCount)</h4>
+        @foreach (var x in Model)
+        {
+            <div class="media mt-4">
+                <div class="img-circle">
+                    <img src="@x.AppUser.ImageUrl" class="img-fluid" alt="...">
+                </div>
+                <div class="media-body">
+
+                    <ul class="time-rply mb-2">
+                        <li>
+                            <a class="name mt-0 mb-2 d-block" title="@x.AppUser.UserName">@x.AppUser.Name @x.AppUser.Surname</a>
+                            @(((DateTime)x.CommentDate).ToString("dd MMM yyyy"))
+
+                        </li>
+                        <li class="reply-last">
+                            <a href="#reply" class="reply" style="color:#ff1654">
+                                Yanıtla
+                            </a>
+                        </li>
+                    </ul>
+                    <p>
+                        @x.CommentContent
+                    </p>
+                </div>
             </div>
-            <div class="media-body">
-
-                <ul class="time-rply mb-2">
-                    <li>
-                        <a class="name mt-0 mb-2 d-block" title="@x.AppUser.UserName">@x.AppUser.Name @x.AppUser.Surname</a>
-                        @(((DateTime)x.CommentDate).ToString("dd MMM yyyy HH:mm"))
-
-                    </li>
-                    <li class="reply-last">
-                        <a href="#reply" class="reply" style="color:#ff1654">
-                            Yanıtla
-                        </a>
-                    </li>
-                </ul>
-                <p>
-                    @x.CommentContent 
-                </p>
-            </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+    </body>

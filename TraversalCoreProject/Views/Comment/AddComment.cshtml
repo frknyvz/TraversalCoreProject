@@ -4,7 +4,7 @@
         <h4 class="side-title mb-2">Bir Yorum Yazın..</h4>
         <form method="post" asp-action="AddComment" asp-controller="Comment">
             <input type="hidden" name="DestinationID" value="@ViewBag.destID" />
-            <input type="text" name="AppUserID" value="@ViewBag.userID" />
+@*             <input type="text" name="AppUserID" value="@ViewBag.userID" /> *@
             <div class="form-group">
                 <textarea name="CommentContent" class="form-control" placeholder="Yorumunuz*" required=""
                       spellcheck="false"></textarea>

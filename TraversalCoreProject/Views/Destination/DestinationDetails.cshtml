@@ -10,7 +10,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Traversal</title>
+    <title>Rota Detayları: @Model.City | Traversal</title>
     <!-- google fonts -->
     <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
@@ -19,6 +19,11 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="~/Traversal-Liberty/assets/css/style-liberty.css">
     <!-- Template CSS -->
+    <style>
+        #titleColor:hover {
+            color: #FF1654;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,18 +41,18 @@
     </section>
     <div class="py-5 w3l-homeblock1 text-center">
         <div class="container mt-md-3">
-            <h3 class="blog-desc-big text-center mb-4">
-                @Model.City bölgesini keşfedin
+            <h3 class="blog-desc-big text-center mb-4" id="titleColor">
+                @Model.City Bölgesini Keşfedin
             </h3>
             <div class="blog-post-align">
                 <div class="blog-post-img">
-                    <a href="#"><img src="@Model.Guide.Image" alt="" class="rounded-circle img-fluid" /></a>
+                    <a href="/Guide/Index/"><img src="@Model.Guide.Image" alt="" class="rounded-circle img-fluid" /></a>
                 </div>
                 <div class="blog-post-info">
                     <div class="author align-items-center mb-1">
-                        <a href="#">@Model.Guide.Name</a>
+                        <a href="/Guide/Index/">@Model.Guide.Name</a>
                         <br />
-                        <a href="#url">@Model.Guide.Route</a>
+                        <b>@Model.Guide.Route</b>
                     </div>
                     <ul class="blog-meta">
                         <li class="meta-item blog-lesson">
@@ -81,10 +86,10 @@
                     </p>
                     <div class="sing-post-thumb mb-5 row pt-3">
                         <div class="col-sm-6">
-                            <a href="#url"><img src="@Model.CoverImage" class="img-fluid radius-image" alt="" style="width:400px;height:400px"></a>
+                            <a href="#url"><img src="@Model.CoverImage" class="img-fluid radius-image" alt="" style="width:500px;height:400px"></a>
                         </div>
                         <div class="col-sm-6 mt-sm-0 mt-3">
-                            <a href="#url"><img src="@Model.Image2" class="img-fluid radius-image" alt="" style="width:400px;height:400px"></a>
+                            <a href="#url"><img src="@Model.Image2" class="img-fluid radius-image" alt="" style="width:500px;height:400px"></a>
                         </div>
                     </div>
                     <p class="mb-4">
@@ -92,20 +97,21 @@
                     </p>
                     <div class="d-grid left-right mt-5 pb-md-5">
                         <div class="buttons-singles tags">
-                            <h4>Etiketler :</h4>
-                            <a href="#blog-tag">#Seyahat</a>
-                            <a href="#blog-tag">#Kültür</a>
-                            <a href="#blog-tag">#Otel</a>
-                            <a href="#blog-tag">#Rezervasyon</a>
+                            <h4 id="titleColor">Etiketler :</h4>
+                            <a href="https://www.google.com/search?q=Seyahat" target="_blank">#Seyahat</a>
+                            <a href="https://www.google.com/search?q=Kültür" target="_blank">#Kültür</a>
+                            <a href="https://www.google.com/search?q=Otel" target="_blank">#Otel</a>
+                            <a href="https://www.google.com/search?q=Rezervasyon" target="_blank">#Rezervasyon</a>
                         </div>
                         <div class="buttons-singles">
-                            <h4>Paylaş :</h4>
-                            <a href="#blog-share"><span class="fa fa-instagram" aria-hidden="true"></span></a>
-                            <a href="#blog-share"><span class="fa fa-facebook" aria-hidden="true"></span></a>
-                            <a href="#blog-share"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+                            <h4 id="titleColor">Paylaş :</h4>
+                            <a href="https://www.instagram.com" target="_blank"><span class="fa fa-instagram" aria-hidden="true"></span></a>
+                            <a href="https://www.facebook.com" target="_blank"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+                            <a href="https://www.whatsapp.com" target="_blank"><span class="fa fa-whatsapp" aria-hidden="true"></span></a>
                         </div>
                     </div>
-                    <div class="author-card mt-5">
+                    <h4>Bu Rotanın Rehberi</h4>
+                    <div class="author-card mt-2">
                         <div class="row align-items-center">
                             <div class="col-sm-3 col-6">
                                 <div>
@@ -114,19 +120,28 @@
                             </div>
                             <div class="col-sm-9 mt-sm-0 mt-3">
                                 <h3 class="mb-3 title">@Model.Guide.Name</h3>
-                                <p>
-                                    @Model.Guide.Description
-                                </p>
-                                <ul class="author-icons mt-4">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>YAŞ</th>
+                                            <th>TECRÜBE</th>
+                                            <th>EĞİTİM</th>
+                                            <th>DİLLER</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                <td>@Model.Guide.Age</td>
+                                                <td>@Model.Guide.Experience</td>
+                                                <td>@Model.Guide.Graduate</td>
+                                                <td>@Model.Guide.Languages</td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                                <ul class="author-icons mt-2">
                                     <li>
                                         <a class="linkedin" href="@Model.Guide.InstagramUrl">
                                             <span class="fa fa-instagram"
-                                                  aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="facebook" href="#url">
-                                            <span class="fa fa-facebook"
                                                   aria-hidden="true"></span>
                                         </a>
                                     </li>
@@ -136,13 +151,8 @@
                                                   aria-hidden="true"></span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a class="google" href="#url">
-                                            <span class="fa fa-google-plus"
-                                                  aria-hidden="true"></span>
-                                        </a>
-                                    </li>
                                 </ul>
+
                             </div>
                         </div>
                     </div>
