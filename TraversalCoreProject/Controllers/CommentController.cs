@@ -4,7 +4,6 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Threading.Tasks;
 
 namespace TraversalCoreProject.Controllers
 {
@@ -27,12 +26,13 @@ namespace TraversalCoreProject.Controllers
             return PartialView();
         }
         [HttpPost]
-        public IActionResult AddComment(Comment p)
+        public IActionResult AddComment(Comment p, Destination d)
         {
+            var destId = d.DestinationID;
             p.CommentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             p.CommentState = true;
             commentManager.TAdd(p);
-            return RedirectToAction("Index", "Destination");
+            return RedirectToAction("DestinationDetails", "Destination", new { id = destId });
         }
     }
 }

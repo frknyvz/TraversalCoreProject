@@ -8,5 +8,9 @@ namespace TraversalCoreProject.Controllers
         {
             return View();
         }
+        public IActionResult UnderMaintenance()
+        {
+            return View();
+        }
     }
 }

@@ -29,7 +29,7 @@
                         <a class="nav-link" href="/Guide/Index">Rehberler</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/About/Index">Hakkımızda (In Progress)</a>
+                        <a class="nav-link" href="/About/Index">Hakkımızda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Contact/Index">İletişim</a>
@@ -38,7 +38,15 @@
                 </ul>
             </div>
             <div class="d-lg-block d-none">
-                <a href="/Login/SignIn/" target="_blank" class="btn btn-style btn-secondary">Keşfet</a>
+                @if(User.Identity.IsAuthenticated)
+                {
+                    <a href="/Member/Dashboard/MemberDashboard/" class="btn btn-style btn-secondary" title="@User.Identity.Name">Profilim</a>
+                }
+                else
+                {
+
+                    <a href="/Login/SignIn/" class="btn btn-style btn-secondary">Giriş Yap</a>
+                }
             </div>
             <!-- toggle switch for light and dark theme -->
             <div class="mobile-position">

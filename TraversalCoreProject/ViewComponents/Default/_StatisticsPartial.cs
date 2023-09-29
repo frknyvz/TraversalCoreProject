@@ -13,6 +13,7 @@ namespace TraversalCoreProject.ViewComponents.Default
             ViewBag.v1 = c.Destinations.Count();
             ViewBag.v2 = c.Guides.Count();
             ViewBag.v3 = "285";
+            ViewBag.v4 = c.Reservations.Where(x => x.Status == "Onaylandı").Count();
             return View();
         }
     }

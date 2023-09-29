@@ -95,6 +95,17 @@
                     <p class="mb-4">
                         @Model.Details2
                     </p>
+                    <div class="text-right">
+                        @if(Model.Status == true)
+                        {
+                            <a class="btn btn-style btn-primary" href="/Member/Reservation/NewReservation/" target="_blank"> Rezervasyon Yap </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-style btn-primary" title="Bu Rota Aktif Değildir" disabled> Rezervasyon Yap </a>
+                        }
+
+                    </div>
                     <div class="d-grid left-right mt-5 pb-md-5">
                         <div class="buttons-singles tags">
                             <h4 id="titleColor">Etiketler :</h4>
@@ -130,12 +141,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            <tr>
-                                                <td>@Model.Guide.Age</td>
-                                                <td>@Model.Guide.Experience</td>
-                                                <td>@Model.Guide.Graduate</td>
-                                                <td>@Model.Guide.Languages</td>
-                                            </tr>
+                                        <tr>
+                                            <td>@Model.Guide.Age</td>
+                                            <td>@Model.Guide.Experience</td>
+                                            <td>@Model.Guide.Graduate</td>
+                                            <td>@Model.Guide.Languages</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <ul class="author-icons mt-2">

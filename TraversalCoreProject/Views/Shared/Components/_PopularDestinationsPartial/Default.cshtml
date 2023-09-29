@@ -1,37 +1,120 @@
 ﻿@using EntityLayer.Concrete
 @model List<Destination>
 
-<section class="w3l-grids-3 py-5">
-    <div class="container py-md-5">
-        <div class="title-content text-left mb-lg-5 mb-4">
-            <h6 class="sub-title">Hemen Planla</h6>
-            <h3 class="hny-title">Tüm Rotalarımız</h3>
-        </div>
-        <div class="row bottom-ab-grids">
-            <!--/row-grids-->
-            @foreach(var x in Model)
-            {
-                <div class="col-lg-6 subject-card mt-lg-0 mt-4 mb-4">
-                    <div class="subject-card-header p-4">
-                        <a href="/Destination/DestinationDetails/@x.DestinationID" class="card_title p-lg-4d-block">
-                            <div class="row align-items-center">
-                                <div class="col-sm-5 subject-img">
-                                    <img src="@x.Image" class="img-fluid" alt="" style="width:280px; height:220px">
-                                </div>
-                                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
-                                    <h4>@x.City</h4>
-                                    <p>@x.DayNight</p>
-                                    <div class="dst-btm">
-                                        <h6 class=""> Başlangıç Fiyatı </h6>
-                                        <span>@x.Price ₺</span>
-                                    </div>
-                                    <p class="sub-para">@x.Description</p>
-                                </div>
+<head>
+    <style>
+        #h5:hover {
+            color: #FF1654;
+        }
+    </style>
+</head>
+<body>
+    <section class="w3l-grids-3 py-5">
+        <div class="container py-md-5">
+            <div class="title-content text-left mb-lg-5 mb-4">
+                <h3 class="hny-title">Tüm Rotalarımız </h3>
+                <small class="sub-title">Hemen Göz At</small>
+            </div>
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <img src="~/member/theme-assets/images/logo/route.png" width="27px" height="27px" />
+                            <h5 class="modal-title ml-2" id="h5">Uyarı</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size:18px">
+                                Rota detaylarını görebilmek için giriş yapmalısınız !
+                            </p>
+                            <p style="font-size:14px">
+                                (Giriş yaptıktan sonra sayfayı yenileyiniz)
+                            </p>
+                            <div style="text-align:right;">
+                                <a href="/Contact/Index/" class="btn btn-secondary mt-2" title="İletişim"><i class="fa fa-question"></i></a>
+                                <a href="/Login/SignIn/" class="btn btn-success mt-2" title="Giriş Yap" target="_blank"><i class="fa fa-sign-in"></i></a>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
-            }
+            </div>
+            <div class="row bottom-ab-grids">
+                @foreach (var x in Model)
+                {
+                    <div class="col-lg-6 subject-card mt-lg-0 mt-4 mb-4">
+                        <div class="subject-card-header p-4">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="/Destination/DestinationDetails/@x.DestinationID" class="card_title p-lg-4d-block">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-5 subject-img">
+                                            <img src="@x.Image" class="img-fluid" alt="" style="width:280px; height:220px">
+                                        </div>
+                                        <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                                            <div class="d-flex">
+                                                <h4>@x.City</h4>
+                                                @if (x.Status == true)
+                                                {
+                                                    <div style="position:absolute;right:2px">
+                                                        <i class="fa fa-circle" style="font-size:12px;color:green" title="Aktif"></i>
+                                                    </div>
+
+                                                }
+                                                else
+                                                {
+                                                    <div style="position:absolute;right:2px">
+                                                        <i class="fa fa-circle" style="font-size:12px;color:red" title="Pasif"></i>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <p>@x.DayNight</p>
+                                            <p class="sub-para mt-2">@x.Description</p>
+                                            <div class="dst-btm">
+                                                <h6 class=""></h6>
+                                                <span>Detaylar &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></span> @*@x.Price*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="" class="card_title p-lg-4d-block" data-toggle="modal" data-target="#myModal">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-5 subject-img">
+                                            <img src="@x.Image" class="img-fluid" alt="" style="width:280px; height:220px">
+                                        </div>
+                                        <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                                            <div class="d-flex">
+                                                <h4>@x.City</h4>
+                                                @if (x.Status == true)
+                                                {
+                                                    <div style="position:absolute;right:2px">
+                                                        <i class="fa fa-circle" style="font-size:12px;color:green"></i>
+                                                    </div>
+
+                                                }
+                                                else
+                                                {
+                                                    <div style="position:absolute;right:2px">
+                                                        <i class="fa fa-circle" style="font-size:12px;color:red"></i>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <p>@x.DayNight</p>
+                                            <p class="sub-para mt-2">@x.Description</p>
+                                            <div class="dst-btm">
+                                                <h6 class=""></h6>
+                                                <span>Detaylar &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></span> @*@x.Price*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</body>

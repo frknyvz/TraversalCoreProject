@@ -1,8 +1,8 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
-using DocumentFormat.OpenXml.Office2021.DocumentTasks;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -12,7 +12,6 @@ namespace TraversalCoreProject.Controllers
     [AllowAnonymous]
     public class DestinationController : Controller
     {
-
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
         private readonly UserManager<AppUser> _userManager;
 
@@ -26,20 +25,21 @@ namespace TraversalCoreProject.Controllers
             var values = destinationManager.TGetList();
             return View(values);
         }
-        [HttpGet]
-        public async Task<IActionResult> DestinationDetails(int id)
+        public async Task<IActionResult> DestinationDetailsAsync(int id)
         {
             ViewBag.i = id;
             ViewBag.destID = id;
-            var value = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.userID = value.Id;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("SignIn", "Login");
+            }
+            else
+            {
+                var value = await _userManager.FindByNameAsync(User.Identity.Name);
+                ViewBag.userID = value.Id;
+            }
             var values = destinationManager.TGetDestinationWithGuide(id);
             return View(values);
-        }
-        [HttpPost]
-        public IActionResult DestinationDetails(Destination p)
-        {
-            return View();
         }
     }
 }

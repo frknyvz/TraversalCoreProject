@@ -1,16 +1,16 @@
-﻿@if (User.Identity.IsAuthenticated)
+﻿ ﻿@if (User.Identity.IsAuthenticated)
 {
     <div class="leave-comment-form mt-5" id="reply">
         <h4 class="side-title mb-2">Bir Yorum Yazın..</h4>
         <form method="post" asp-action="AddComment" asp-controller="Comment">
             <input type="hidden" name="DestinationID" value="@ViewBag.destID" />
-@*             <input type="text" name="AppUserID" value="@ViewBag.userID" /> *@
+            <input type="hidden" name="AppUserID" value="@ViewBag.userID" />
             <div class="form-group">
                 <textarea name="CommentContent" class="form-control" placeholder="Yorumunuz*" required=""
-                      spellcheck="false"></textarea>
+                          spellcheck="false"></textarea>
             </div>
             <div class="submit text-right">
-                <button class="btn btn-style btn-primary">Yorum Yap </button>
+                <button class="btn btn-style btn-primary"> Yorum Yap </button>
             </div>
         </form>
     </div>
@@ -25,11 +25,11 @@ else
         <form method="post" asp-action="AddComment" asp-controller="Comment">
             <div class="form-group">
                 <textarea name="CommentContent" class="form-control" placeholder="Yorumunuz*" required=""
-                      spellcheck="false" disabled></textarea>
+                          spellcheck="false" disabled></textarea>
             </div>
             <div class="submit text-right">
-                <button class="btn btn-style btn-primary" disabled>Yorum Yap</button>
+                <a class="btn btn-style btn-primary" href="/Login/SignIn" target="_blank">Giriş Yap</a>
             </div>
         </form>
     </div>
-}
+} 
