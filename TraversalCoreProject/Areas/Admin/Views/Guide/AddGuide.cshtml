@@ -1,104 +1,121 @@
-﻿@model EntityLayer.Concrete.Guide
+﻿@model TraversalCoreProject.Areas.Admin.Models.AddGuideLangViewModel
 @{
     ViewData["Title"] = "AddGuide";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<head>
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
-<!-- Bootstrap Font Icon CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <style>
 
-<style>
-
-    h2 {
-        text-align: center;
-    }
-
-    #backButton {
-    }
-
-    #saveButton {
-        position: absolute;
-        right: 135px;
-    }
-
-    .form__input {
-        width: 100%;
-        height: 35px;
-        border: 0.5px solid;
-        border-radius: 2px;
-        margin: 0.625rem auto;
-        transition: all 250ms;
-    }
-
-        .form__input:focus {
-            outline: none;
-            border-top-color: rgba(0,0,0,0.1);
+        h2 {
+            text-align: center;
         }
 
-            .form__input:focus + .form__label, .form__input:not(:placeholder-shown) + .form__label {
-                transform: translateY(-4.5rem) scale(1);
-                color: gray;
+        #backButton {
+        }
+
+        #saveButton {
+            position: absolute;
+            right: 135px;
+        }
+
+        .form__input {
+            width: 100%;
+            height: 35px;
+            border: 0.5px solid;
+            border-radius: 2px;
+            margin: 0.625rem auto;
+            transition: all 250ms;
+        }
+
+            .form__input:focus {
+                outline: none;
+                border-top-color: rgba(0,0,0,0.1);
             }
 
-        .form__input::placeholder {
-            display: none;
-            text-align: center;
-            color: transparent;
+                .form__input:focus + .form__label, .form__input:not(:placeholder-shown) + .form__label {
+                    transform: translateY(-4.5rem) scale(1);
+                    color: gray;
+                }
+
+            .form__input::placeholder {
+                display: none;
+                text-align: center;
+                color: transparent;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            .form__input:not(:placeholder-shown) {
+                border-top-color: rgba(0, 0, 0, 0.5);
+            }
+
+        .form__label {
+            font-size: 1rem;
+            color: gray;
+            display: block;
+            transform: translate(1.25rem,-2.5rem);
+            transform-origin: 0 0;
+            transition: all 500ms;
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            pointer-events: none;
         }
+    </style>
+</head>
 
-        .form__input:not(:placeholder-shown) {
-            border-top-color: rgba(0, 0, 0, 0.5);
-        }
-
-    .form__label {
-        font-size: 1rem;
-        color: gray;
-        display: block;
-        transform: translate(1.25rem,-2.5rem);
-        transform-origin: 0 0;
-        transition: all 500ms;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        pointer-events: none;
-    }
-</style>
 
 <body>
     <h2>YENİ REHBER EKLE</h2>
     <br />
     <div class="container">
-        <form method="post" action="" class="form">
+        <form method="post" class="form">
             <a href="/Admin/Guide/Index" class="btn btn-outline-danger" id="backButton"><i class="bi bi-backspace"></i>  Geri</a>
             <button class="btn btn-outline-success" id="saveButton"><i class="bi bi-save"></i>  Oluştur</button>
             <br /><br />
 
-            <input type="text" placeholder="Name" class="form__input" asp-for="Name" />
-            <label for="name" class="form__label">Ad Soyad</label>
-            <span asp-validation-for="Name" class="text-danger"></span>
-
-            <input type="text" placeholder="Name" class="form__input" asp-for="Image" />
+            <input type="text" placeholder="Name" class="form__input" asp-for="Guide.Image" />
             <label for="name" class="form__label">Rehber Fotoğrafı (URL)</label>
-            <span asp-validation-for="Image" class="text-danger"></span>
+            <span asp-validation-for="Guide.Image" class="text-danger"></span>
 
-            <input type="text" placeholder="Name" class="form__input" asp-for="InstagramUrl" />
-            <label for="name" class="form__label">Instagram URL</label>
+            <input type="text" placeholder="Name" class="form__input" asp-for="Guide.Name" />
+            <label for="name" class="form__label">Ad Soyad</label>
+            <span asp-validation-for="Guide.Name" class="text-danger"></span>
 
+            <input type="number" placeholder="Name" class="form__input" asp-for="Guide.Age" />
+            <label for="name" class="form__label">Yaş</label>
+            <span asp-validation-for="Guide.Age" class="text-danger"></span>
 
-            <input type="text" placeholder="Name" class="form__input" asp-for="TwitterUrl" />
-            <label for="name" class="form__label">Twitter URL</label>
+            <select class="form__input" asp-for="Guide.Experience">
+                <option value="YOK">YOK</option>
+                <option value="1 YIL">1 YIL</option>
+                <option value="2 YIL">2 YIL</option>
+                <option value="3 YIL">3 YIL</option>
+                <option value="4 YIL">4 YIL</option>
+                <option value="5 YIL VE FAZLASI">5 YIL VE FAZLASI</option>
+            </select>
+            <label for="name" class="form__label">Deneyim</label>
 
+            <input type="text" placeholder="Name" class="form__input" asp-for="Guide.Graduate" />
+            <label for="name" class="form__label">Eğitim</label>
+ 
+            <select asp-items="@Model.Languages" asp-for="Guide.Languages" class="form__input">
+                <option></option>
+            </select>
+            <label for="name" class="form__label">Diller</label> 
 
-            <input type="text" placeholder="Name" class="form__input" asp-for="Description" />
-            <label for="name" class="form__label">Açıklama</label>
-            <span asp-validation-for="Description" class="text-danger"></span>
-
+            <input type="text" placeholder="Name" class="form__input" asp-for="Guide.Route" />
+            <label for="name" class="form__label">Rota</label>
+            <span asp-validation-for="Guide.Route" class="text-danger"></span>
         </form>
     </div>
 </body>
+<script>
+</script>
 
 
 

@@ -1,7 +1,8 @@
 ﻿@using EntityLayer.Concrete
-@model List<Reservation>
+@model List<Comment>
+
 @{
-    ViewData["Title"] = "ReservationUser";
+    ViewData["Title"] = "CommentUser";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
 }
@@ -56,35 +57,37 @@
 
 </style>
 
-<h2>GEÇMİŞ REZERVASYONLAR</h2>
+<h2>KULLANICI YORUMLARI</h2>
 <br />
 <a href="/Admin/User/Index/" class="btn btn-outline-danger" title="Geri"><i class="bi bi-backspace"></i>  Geri</a>
-<br /><br />
+<br />
+<br />
 <div class="styledTable">
     <table>
         <thead>
             <tr>
                 <th>#</th>
-                <th>KULLANICI ID</th>
-                <th>ROTA</th>
-                <th>KİŞİ SAYISI</th>
-                <th>TARİH</th>
+                <th>Kullanıcı</th>
+                <th>Rota</th>
+                <th>İçerik</th>
+                <th>Tarih</th>
+                <th>Detaylar</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var x in Model)
             {
-                { count = count + 1; }
+                count++;
                 <tr>
                     <td>@count</td>
-                    <td>@x.AppUserId</td>
+                    <td>@x.AppUser.Name @x.AppUser.Surname</td>
                     <td>@x.Destination.City</td>
-                    <td>@x.PersonCount</td>
-                    <td>@(((DateTime)x.ReservationDate).ToString("dd MMM yyyy"))</td>
+                    <td>@x.CommentContent</td>
+                    <td>@(((DateTime)x.CommentDate).ToString("dd MMMM yyyy"))</td>
+                    <td><a href="/Destination/DestinationDetails/@x.DestinationID" class="btn btn-outline-info" target="_blank">Görüntüle</a></td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
 

@@ -64,6 +64,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>ID</th>
                 <th>AD SOYAD</th>
                 <th>CİNSİYET</th>
                 <th>KULLANICI ADI</th>
@@ -83,15 +84,27 @@
                         sayac = @sayac + 1;
                     }
                     <td>@sayac</td>
+                    <td>@x.Id</td>
                     <td>@x.Name @x.Surname</td>
                     <td>@x.Gender</td>
                     <td>@x.UserName</td>
                     <td>@x.Email</td>
                     <td>@x.PhoneNumber</td>
-                    <td><a href="/Admin/User/DeleteUser/@x.Id" class="btn btn-outline-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
-                    <td><a href="/Admin/User/EditUser/@x.Id" class="btn btn-outline-success" title="Düzenle"><i class="bi bi-vector-pen"></i></a></td>
-                    <td><a href="/Admin/User/CommentUser/@x.Id" class="btn btn-outline-info" title="Yorumlar"><i class="bi bi-chat-dots"></i></a></td>
-                    <td><a href="/Admin/User/ReservationUser/@x.Id" class="btn btn-outline-secondary" title="Tur Geçmişi"><i class="bi bi-clock-history"></i></a></td>
+
+                    @if (@x.UserName == "Administrator")
+                    {
+                        <td><a href="#" class="btn btn-outline-danger" title="Erişim Engellendi"><i class="bi bi-exclamation-circle"></i></a></td>
+                        <td><a href="#" class="btn btn-outline-danger" title="Erişim Engellendi"><i class="bi bi-exclamation-circle"></i></a></td>
+                        <td><a href="#" class="btn btn-outline-danger" title="Erişim Engellendi"><i class="bi bi-exclamation-circle"></i></a></td>
+                        <td><a href="#" class="btn btn-outline-danger" title="Erişim Engellendi"><i class="bi bi-exclamation-circle"></i></a></td>
+                    }
+                    else
+                    {
+                        <td><a href="/Admin/User/DeleteUser/@x.Id" class="btn btn-outline-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="#" class="btn btn-outline-success" title="Düzenle (In Progress)" disabled><i class="bi bi-vector-pen"></i></a></td> @*/Admin/User/EditUser/@x.Id*@
+                        <td><a href="/Admin/User/CommentUser/@x.Id" class="btn btn-outline-info" title="Yorumlar"><i class="bi bi-chat-dots"></i></a></td>
+                        <td><a href="/Admin/User/ReservationUser/@x.Id" class="btn btn-outline-secondary" title="Tur Geçmişi"><i class="bi bi-clock-history"></i></a></td>
+                    }
                 </tr>
             }
         </tbody>

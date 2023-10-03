@@ -1,0 +1,72 @@
+﻿@model EntityLayer.Concrete.AppUser
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    #backButton {
+    }
+
+    #updateButton {
+        position: absolute;
+        right: 110px
+    }
+
+</style>
+
+
+<h2>KULLANICI GÜNCELLE</h2>
+
+
+<form method="post">
+    @Html.HiddenFor(x=>x.Id)
+
+    <button class="btn btn-outline-success" id="updateButton"><i class="bi bi-save"></i> Kullanıcı Güncelle</button>
+    <a href="/Admin/User/Index" class="btn btn-outline-danger" id="backButton"><i class="bi bi-backspace"></i> Geri</a>
+    <br /><br />
+
+    <div class="form-group">
+        @Html.Label("Ad:")
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Soyad:")
+        <input type="text" asp-for="Surname" class="form-control" />
+    </div>
+    &nbsp;
+     <div class="form-group">
+        @Html.Label("Cinsiyet:")
+        <select asp-for="Gender" class="form-control">
+            <option value=""></option>
+            <option value="E">Erkek</option>
+            <option value="K">Kadın</option>
+        </select>
+    </div> 
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Kullanıcı Adı:")
+        <input type="text" asp-for="UserName" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("E-posta:")
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Telefon:")
+        <input type="text" asp-for="PhoneNumber" class="form-control" />
+    </div>
+    <br />
+</form>
+

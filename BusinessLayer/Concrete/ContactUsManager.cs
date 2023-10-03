@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -30,12 +31,12 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(ContactUs t)
         {
-            throw new NotImplementedException();
+            _contactUsDal.Delete(t);
         }
 
         public ContactUs TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _contactUsDal.GetByID(id);
         }
 
         public List<ContactUs> TGetList()

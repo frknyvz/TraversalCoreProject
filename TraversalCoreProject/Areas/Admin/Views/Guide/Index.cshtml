@@ -78,10 +78,12 @@
                 <th>#</th>
                 <th>GÖRSEL</th>
                 <th>AD SOYAD</th>
-                <th>AÇIKLAMA</th>
+                <th>YAŞ</th>
+                <th>DENEYİM</th>
+                <th>EĞİTİM</th>
+                <th>DİLLER</th>
+                <th>ROTA</th>
                 <th>DURUM</th>
-                <th>TWITTER</th>
-                <th>INSTAGRAM</th>
                 <th>DÜZENLE</th>
             </tr>
         </thead>
@@ -93,7 +95,11 @@
                     <td>@count</td>
                     <td><img src="@x.Image" class="guideImg" /></td>
                     <td>@x.Name</td>
-                    <td>@x.Description</td>
+                    <td>@x.Age</td>
+                    <td>@x.Experience</td>
+                    <td>@x.Graduate</td>
+                    <td>@x.Languages</td>
+                    <td>@x.Route</td>
 
                     @{
                         if (x.Status == true)
@@ -105,9 +111,7 @@
                             <td><a href="/Admin/Guide/ChangeToTrue/@x.GuideID" class="btn btn-outline-success"><i class="bi bi-check-circle"></i> Aktif Yap</a></td>
                         }
                     }
-                    <td><a href="@x.TwitterUrl" title="Git" class="btn btn-outline-info" target="_blank"><i class="bi bi-twitter"></i></a></td>
-                    <td><a href="@x.InstagramUrl" title="Git" class="btn btn-outline-info" target="_blank"><i class="bi bi-instagram"></i></a></td>
-                    <td><a href="/Admin/Guide/EditGuide/" class="btn btn-outline-warning" title="Düzenle"><i class="bi bi-vector-pen"></i></a></td>
+                    <td><a href="/Admin/Guide/EditGuide/@x.GuideID" class="btn btn-outline-warning" title="Düzenle"><i class="bi bi-vector-pen"></i></a></td>
                 </tr>
             }
         </tbody>

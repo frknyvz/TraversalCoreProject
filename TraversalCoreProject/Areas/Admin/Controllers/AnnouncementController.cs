@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using TraversalCoreProject.Areas.Admin.Models;
 
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/Announcement")]
     [Authorize(Roles = "Admin")]
     public class AnnouncementController : Controller
     {
@@ -24,6 +24,8 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             _mapper = mapper;
         }
 
+        [Route("")]
+        [Route("Index")]
         public IActionResult Index()
         {
             //List<Announcement> announcements = _announcementService.TGetList();
@@ -44,12 +46,14 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             return View(values);
         }
 
+        [Route("AddAnnouncement")]
         [HttpGet]
         public IActionResult AddAnnouncement()
         {
             return View();
         }
 
+        [Route("AddAnnouncement")]
         [HttpPost]
         public IActionResult AddAnnouncement(AnnouncementAddDTO model)
         {
@@ -67,6 +71,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Route("DeleteAnnouncement/{id}")]
         public IActionResult DeleteAnnouncement(int id)
         {
             var values = _announcementService.TGetByID(id);
@@ -74,12 +79,15 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [Route("UpdateAnnouncement/{id}")]
         [HttpGet]
         public IActionResult UpdateAnnouncement(int id)
         {
             var values = _mapper.Map<AnnouncementUpdateDTO>(_announcementService.TGetByID(id));
             return View(values);
         }
+
+        [Route("UpdateAnnouncement/{id}")]
         [HttpPost]
         public IActionResult UpdateAnnouncement(AnnouncementUpdateDTO model)
         {

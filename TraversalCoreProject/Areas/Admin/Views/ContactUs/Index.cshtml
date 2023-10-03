@@ -4,86 +4,140 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
 }
+<head>
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
-<!-- Bootstrap Font Icon CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <style>
 
-<style>
+        h2 {
+            text-align: center;
+        }
 
-    h2 {
-        text-align: center;
-    }
+        .styledTable {
+            position: center;
+        }
 
-    .styledTable {
-        position: center;
-    }
+        table {
+            width: 100%;
+            border: 0.5px solid;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
 
-    table {
-        width: 100%;
-        border: 0.5px solid;
-        border-collapse: collapse;
-        overflow: hidden;
-        box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
+        th {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+            text-align: center;
+        }
 
-    th {
-        padding: 15px;
-        background-color: rgba(255,255,255,0.2);
-        color: #fff;
-        text-align: center;
-    }
+        td {
+            border: 1px solid;
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #000;
+            text-align: center;
+        }
 
-    td {
-        border: 1px solid;
-        padding: 15px;
-        background-color: rgba(255,255,255,0.2);
-        color: #000;
-        text-align: center;
-    }
+        thead th {
+            background-color: #5453A6;
+        }
 
-    thead th {
-        background-color: #5453A6;
-    }
+        tbody tr :hover {
+            background-color: rgba(255,255,255,0.2);
+        }
 
-    tbody tr :hover {
-        background-color: rgba(255,255,255,0.2);
-    }
+        tbody td {
+            position: relative;
+        }
 
-    tbody td {
-        position: relative;
-    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="~/sneat-1.0.0/assets/img/favicon/social-engineering.png" width="27px" height="27px" />
+                        <h3 class="modal-title">DETAYLAR</h3>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="styledTable">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>MAİL</th>
+                                        <th>İÇERİK</th>
+                                        <th>DURUM</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        <tr>
+                                            <td>@x.ContactUsID</td>
+                                            <td>@x.Mail</td>
+                                            <td>@x.MessageBody</td>
+                                            @if (x.MessageStatus == true)
+                                            {
+                                                <td>Aktif</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Pasif</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-</style>
+        <h2>GELEN MESAJLAR</h2>
+        <br />
+
+        <div class="styledTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>GÖNDEREN</th>
+                        <th>KONU</th>
+                        <th>TARİH</th>
+                        <th>SİL</th>
+                        <th>MESAJI AÇ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@x.Name</td>
+                            <td>@x.Subject</td>
+                            <td>@x.MessageDate.ToString("dd MMM yyyy")</td>
+                            <td><a href="/Admin/ContactUs/DeleteMessage/@x.ContactUsID" class="btn btn-outline-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
+                            <td><a class="btn btn-outline-dark" title="Mesajı Aç" data-bs-toggle="modal" data-bs-target="#myModal"><i class="bi bi-envelope-paper"></i></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
 
 
-<h2>GELEN MESAJLAR</h2>
-<br />
 
-<div class="styledTable">
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>GÖNDEREN</th>
-                <th>KONU</th>
-                <th>TARİH</th>
-                <th>SİL</th>
-                <th>MESAJI AÇ</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var x in Model)
-            {
-                count++;
-                <tr>
-                    <td>@count</td>
-                    <td>@x.Name</td>
-                    <td>@x.Subject</td>
-                    <td>@x.MessageDate.ToString("dd MMM yyyy")</td>
-                    <td><a href="#" class="btn btn-outline-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
-                    <td><a href="#" class="btn btn-outline-dark" title="Mesajı Aç"><i class="bi bi-envelope-paper"></i></a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+

@@ -1,12 +1,7 @@
 ﻿using BusinessLayer.Abstract;
-using DocumentFormat.OpenXml.Wordprocessing;
-using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using TraversalCoreProject.Models;
 
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {

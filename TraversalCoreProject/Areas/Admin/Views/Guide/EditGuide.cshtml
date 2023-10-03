@@ -1,0 +1,81 @@
+﻿@model EntityLayer.Concrete.Guide
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    #backButton {
+    }
+
+    #updateButton {
+        position: absolute;
+        right: 110px
+    }
+
+</style>
+
+
+<h2>REHBER BİLGİLERİ GÜNCELLE</h2>
+
+
+<form method="post">
+    @Html.HiddenFor(x=>x.GuideID)
+
+    <button class="btn btn-outline-success" id="updateButton"><i class="bi bi-save"></i> Bilgileri Güncelle</button>
+    <a href="/Admin/Guide/Index" class="btn btn-outline-danger" id="backButton"><i class="bi bi-backspace"></i> Geri</a>
+    <br /><br />
+
+    <div class="form-group">
+        @Html.Label("Rehber Fotoğrafı (URL):")
+        <input type="text" asp-for="Image" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Ad Soyad:")
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Yaş:")
+        <input type="number" asp-for="Age" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Deneyim:")
+        <select class="form-control" asp-for="Experience">
+            <option value="YOK">YOK</option>
+            <option value="1 YIL">1 YIL</option>
+            <option value="2 YIL">2 YIL</option>
+            <option value="3 YIL">3 YIL</option>
+            <option value="4 YIL">4 YIL</option>
+            <option value="5 YIL VE FAZLASI">5 YIL VE FAZLASI</option>
+        </select>
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Eğitim:")
+        <input type="text" asp-for="Graduate" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Diller:")
+        <input type="text" asp-for="Languages" class="form-control" />
+    </div>
+    &nbsp;
+    <div class="form-group">
+        @Html.Label("Rota:")
+        <input type="text" asp-for="Route" class="form-control" />
+    </div>
+    <br />
+</form>
+
+

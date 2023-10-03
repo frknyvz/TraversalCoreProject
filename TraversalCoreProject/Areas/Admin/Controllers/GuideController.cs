@@ -4,6 +4,9 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using TraversalCoreProject.Areas.Admin.Models;
 
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
@@ -31,7 +34,58 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult AddGuide()
         {
-            return View();
+            var viewModel = new AddGuideLangViewModel
+            {
+                Languages = new List<SelectListItem>
+                {
+                    new SelectListItem
+                    {
+                        Text = "Almanca",
+                        Value = "Almanca"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Çince",
+                        Value = "Çince"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Fransızca",
+                        Value = "Fransızca"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "İngilizce",
+                        Value = "İngilizce"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "İspanyolca",
+                        Value = "İspanyolca"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Japonca",
+                        Value = "Japonca"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Korece",
+                        Value = "Korece"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Türkçe",
+                        Value = "Türkçe"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Yunanca",
+                        Value = "Yunanca"
+                    },
+                }
+            };
+            return View(viewModel);
         }
 
         [Route("AddGuide")]
@@ -55,7 +109,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             }
         }
 
-        [Route("EditGuide")]
+        [Route("EditGuide/{id}")]
         [HttpGet]
         public IActionResult EditGuide(int id)
         {
@@ -63,7 +117,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             return View(values);
         }
 
-        [Route("EditGuide")]
+        [Route("EditGuide/{id}")]
         [HttpPost]
         public IActionResult EditGuide(Guide guide)
         {

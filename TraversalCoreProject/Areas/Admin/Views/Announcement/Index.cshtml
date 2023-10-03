@@ -70,7 +70,6 @@
                     <th>TARİH</th>
                     <th>SİL</th>
                     <th>GÜNCELLE</th>
-                    <th>DETAYLAR</th>
                 </tr>
             </thead>
             <tbody>
@@ -83,7 +82,6 @@
                         <td>@(((DateTime)x.Date).ToString("dd MMM yyyy"))</td>
                         <td><a href="/Admin/Announcement/DeleteAnnouncement/@x.AnnouncementID" class="btn btn-danger" title="Sil"><i class="bi bi-trash"></i></a></td>
                         <td><a href="/Admin/Announcement/UpdateAnnouncement/@x.AnnouncementID" class="btn btn-warning" title="Güncelle"><i class="bi bi-vector-pen"></i></a></td>
-                        <td><a href="#" class="btn btn-info" title="Detaylar"><i class="bi bi-box-arrow-up-right"></i></a></td>
                     </tr>
                 }
             </tbody>
