@@ -1,6 +1,6 @@
-# TraversalCoreProject
+# Traversal
 
-ASP.NET MVC Core 5.0 kullanılarak, kullanıcıların kayıt olarak tatil planlamaları yapabileceği ve bilgi edinebileceği bir site olarak hazırlanan Traversal Projesinde,
+ASP.NET Core 5.0 kullanılarak, kullanıcıların kayıt olarak tatil planlamaları yapabileceği ve bilgi edinebileceği bir site olarak hazırlanan Traversal Projesinde,
 - AJAX
 - API
 - Unit of Work
@@ -13,4 +13,8 @@ ASP.NET MVC Core 5.0 kullanılarak, kullanıcıların kayıt olarak tatil planla
 - SignalR
 - Model View Controller
 - Rapid API
-gibi pek çok konu başlığı kullanılmıştır. Katkılarından dolayı Murat Yücedağ Hocama teşekkürlerimle... 
+- N Katmanlı Mimari
+- Çoklu Dil Desteği
+- GIT
+gibi pek çok konu başlığından yararlanılmıştır.
+Bu projenin geliştirmesindeki katkılarından dolayı Murat Yücedağ Hocama teşekkürlerimle... 
