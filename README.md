@@ -18,3 +18,5 @@ ASP.NET Core 5.0 kullanılarak, kullanıcıların kayıt olarak tatil planlamala
 - GIT
 gibi pek çok konu başlığından yararlanılmıştır.
 Bu projenin geliştirmesindeki katkılarından dolayı Murat Yücedağ Hocama teşekkürlerimle... 
+
+Veritabanı linki: https://drive.google.com/drive/folders/1aeq2QAmIYvKMQ3oLU0Y4fN3W3Bu66T52?usp=sharing
